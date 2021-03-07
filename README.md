@@ -1,19 +1,26 @@
-# my-project
+# 日期轮播图 css 特效
 
-## Project setup
-```
-yarn install
-```
+抖音视频（手机形式刷抖音），全部放出来，懒加载，可以点击下一页
+图片随便放点
+网易云热评，采取一次请求 5 条，再次刷新不会请求。点击按钮后能进行请求
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+# 1.疫情数据合并
 
-### Compiles and minifies for production
-```
-yarn build
-```
+- 2.实现点击之后获取地理位置 根据 ip 实现获取用户的浏览器
+- 下拉到一定高度出现去顶部 可定时器实现
+- 页面刷新之后依然回到原理的滚动位置
+- 天行数据 api 网络请求 api
+  - 数据表格实现排序 可用 element UI
+    -ele 需要解决：1.每一行，行的高度 2.点击之后加载全部，还可合并(bug)
+    折现图 一堆折线图用轮播图实现
+    外国和中国疫情用动态组件吧
+    导航条搜索框用百度搜索吧
+- 响应式布局
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# numb lcl 编写
+
+2. echarts 图表
+
+3) 轮播图
+
+刷新之后还是回到原来的位置
