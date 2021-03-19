@@ -53,7 +53,10 @@ export default {
   },
   methods: {
     goHome() {
-      this.$router.push("./");
+      this.$router.push({
+        name: "Home",
+        params: {},
+      });
     },
     // 登录
     userLogin() {
@@ -104,24 +107,6 @@ export default {
     },
   },
   mounted() {
-    // let game = {
-    //   a: 1,
-    //   [Symbol("say")]: function() {
-    //     console.log(111);
-    //   },
-    //   [Symbol("sing")]: () => {
-    //     console.log(222);
-    //   },
-    // };
-    // console.log(game);
-    // const xiyou = ["qqq", "www", "eee", "rrr"];
-    // // for (let i of xiyou) {
-    // //   console.log(i);
-    // // }
-    // // console.log(xiyou);
-    // let iterator = xiyou[Symbol.iterator]();
-    // console.log(iterator.next());
-
     // console.log(window.localStorage);
     // 加载用户名,有本地存储则用本地的
     if (window.localStorage.userCity) {
@@ -157,7 +142,7 @@ $activateColor: #10aeb5;
   .container {
     margin: 0 auto;
     width: 1280px;
-    overflow: hidden;
+    // overflow: hidden;
     .logo {
       cursor: pointer;
       float: left;

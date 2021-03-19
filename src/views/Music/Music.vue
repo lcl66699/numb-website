@@ -1,70 +1,142 @@
 <template>
   <div>
-    <!-- 头部导航 -->
-    <Nav />
-    <el-button @click="yiyu"> 点我请求抑郁云</el-button>
-    <div>
-      <ul v-if="musicList">
-        <li v-for="(item, index) in musicList" :key="index">
-          {{ item.content }}
-          <span>歌名:{{ item.source }} </span>
-        </li>
-      </ul>
+    <!-- 左侧个性推荐 -->
+    <div class="wrapper">
+      <div class="display">
+        <el-header
+          style="border-bottom: 1px solid rgb(230,230,230)"
+          height="100%;"
+        >
+          <el-menu style="width: 250px;float:left">
+            <el-menu-item
+              :class="isavtivedHome == 'BannerIndex' ? 'isavtivedHome' : ''"
+              @click="changeCompLeft('BannerIndex', this)"
+              >个性推荐</el-menu-item
+            >
+            <el-menu-item
+              :class="isavtivedHome == 'MusicRanking' ? 'isavtivedHome' : ''"
+              @click="changeCompLeft('MusicRanking')"
+              >排行榜</el-menu-item
+            >
+
+            <el-menu-item
+              :class="isavtivedHome == 'NewMusic' ? 'isavtivedHome' : ''"
+              @click="changeCompLeft('NewMusic')"
+            >
+              最新音乐
+            </el-menu-item>
+            <el-menu-item
+              :class="isavtivedHome == 'Video' ? 'isavtivedHome' : ''"
+              @click="changeCompLeft('Video')"
+              >Mv</el-menu-item
+            >
+            <el-menu-item
+              :class="isavtivedHome == 'Tets' ? 'isavtivedHome' : ''"
+              @click="changeCompLeft('Tets')"
+              >我的信息</el-menu-item
+            >
+          </el-menu>
+        </el-header>
+
+        <!-- 右侧展示 -->
+        <keep-alive>
+          <component :is="compleft" @setSongListInfo="getMusicUrl" />
+        </keep-alive>
+      </div>
+      <!-- 新歌 -->
+      <!-- <NewMusic @setSongListInfo="getMusicUrl" /> -->
+
+      <audio controls :src="musicUrl" autoplay class="playMusicAudio"></audio>
     </div>
+
     <Foot />
   </div>
 </template>
 <script>
-import Nav from "../../components/head/Nav";
 import Foot from "../../components/Foot";
-import { getHotReview } from "../../api/index"; //抑郁云热评
+import NewMusic from "./NewMusic";
+
 export default {
   name: "Home",
   data() {
     return {
-      musicList: [],
+      isavtivedHome: "BannerIndex", //音乐首页左侧的动态组件样式切换
+      // 播放音乐的链接
+      musicUrl: "",
+      // 动态组件
+      compleft: "BannerIndex",
     };
   },
   components: {
-    Nav,
     Foot,
+    NewMusic, //最新音乐
+    Tets: () => import("./Tets.vue"),
+    BannerIndex: () => import("./BannerIndex.vue"), //歌单
+    MusicRanking: () => import("./MusicRanking.vue"), //排行
+    Video: () => import("./Video/Video.vue"), //排行
   },
-  mounted() {},
+  mounted() {
+    // 新歌速递
+    // this.homepage();
+  },
   methods: {
-    yiyu() {
-      const promise1 = getHotReview();
-      const promise2 = getHotReview();
-      const promise3 = getHotReview();
-
-      Promise.all([promise1, promise2, promise3])
-        .then((value) => {
-          for (let i of value) {
-            if (i.data.code == 200) {
-              this.musicList.push(i.data.newslist[0]);
-            }
+    // 动态组件切换
+    changeCompLeft(compName) {
+      this.compleft = compName;
+      this.isavtivedHome = compName;
+    },
+    /*
+  首页-发现
+说明 : 调用此接口 , 可获取音乐首页信息 */
+    homepage() {
+      this.$http
+        .get("/homepage/block/page")
+        .then((res) => {
+          if (res.data.code == 200) {
+            console.log("获取APP首页信息", res);
+          } else {
+            console.log("请求失败", res);
           }
         })
-        .then(() => {
-          console.log("请求到的网易云评论接口", this.musicList);
-        })
         .catch((error) => {
-          console.log("网易云评论接口", error);
+          console.log(error);
         });
+    },
 
-      // getHotReview()
-      //   .then((res) => {
-      //     console.log(res);
-      //     if (res.data.code == 200) {
-      //       console.log(res.data);
-      //     } else {
-      //       reject(res);
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+    //根据id获取音乐url
+    getMusicUrl(musicId) {
+      this.$http.get("song/url", { params: { id: musicId } }).then((res) => {
+        console.log("fuji", musicId, res);
+        this.musicUrl = res.data.data[0].url;
+      });
+    },
+    //设置当前播放url
+    setMusicUrl(mUrl, detail) {
+      //设置关于音乐的链接和歌曲信息
+      this.musicUrl = mUrl;
+      this.music = detail;
+      this.curId = detail.id;
+      console.log("父类传的", mUrl, detail);
+      //将当前轮播图传来的歌曲id放入歌单中
+      this.playListInfo.push(detail.id);
+
+      this.setAudioTagsInfo();
     },
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.wrapper {
+  width: 1280px;
+  margin: 0 auto;
+  .display {
+    display: flex;
+  }
+  .el-header {
+    .isavtivedHome {
+      color: #10aeb5 !important;
+      border-left: 4px solid;
+    }
+  }
+}
+</style>

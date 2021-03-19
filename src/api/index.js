@@ -66,6 +66,8 @@ export function getHotReview() {
         params: {
             key
         }
-    })
+    }).catch((error) => {
+            console.log('网易热评', error);
+        })
 }
 

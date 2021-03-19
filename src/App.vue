@@ -1,11 +1,14 @@
 <template>
   <div id="master">
+    <Nav/>
     <router-view />
     <!-- 返回顶部 -->
     <GoTop />
   </div>
 </template>
 <script>
+// 导航条
+import Nav from './components/head/Nav'
 // 返回顶部
 import GoTop from "./components/GoTop";
 export default {
@@ -14,6 +17,7 @@ export default {
   },
   components: {
     GoTop,
+    Nav
   },
   mounted() {},
   methods: {},

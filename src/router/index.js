@@ -14,8 +14,11 @@ import Music from '@/views/Music/Music.vue'
 import Foods from '@/views/Foods/Foods.vue'
 import Photos from '@/views/Photos/Photos.vue'
 import Chat from '@/views/Chat/Chat.vue'
+import QQ from '../views/Chat/QQ.vue'
 import Lemon from '@/views/Lemon/Lemon.vue'
 import Others from '@/views/Others/Others.vue'
+import SingerDetail from "@/views/Music/SingerDetail.vue";
+import MusicListTable from '@/views/Music/MusicListTable.vue'
 const routes = [
   {
     path: '/',
@@ -30,7 +33,32 @@ const routes = [
   {
     path: '/music',
     name: 'Music',
-    component: Music
+    component: Music,
+    children: [
+    ]
+  },
+  {
+    path: '/music/songlist/:id',
+    name: 'SingerDetail',
+    component: SingerDetail,
+    //歌单详情中的子组件歌曲列表,评论
+    children: [//隐式传参声明的name
+      { name: 'musicPage', path: '/musicPage', component: MusicListTable },
+      //评论模块子组件
+      { path: '/comment/:id', component: () => import('../views/Music/CommentPage') }
+    ]
+  },
+  //跳转mv视频模块
+  {
+    path: '/video/:id',
+    name: 'VideoPage',
+    component: () => import('../views/Music/Video/VideoPage')
+  },
+  //视频播放页
+  {
+    path: '/videoPlay/:id',
+    name: 'videoPlay',
+    component: () => import('../views/Music/Video/VideoPlayPage')
   },
   {
     path: '/foods',
@@ -45,7 +73,15 @@ const routes = [
   {
     path: '/chat',
     name: 'Chat',
-    component: Chat
+    component: Chat,
+    children: [
+
+      {
+        path: 'qq',
+        name: 'QQ',
+        component: QQ
+      }
+    ]
   },
   {
     path: '/lemon',
@@ -55,7 +91,14 @@ const routes = [
   {
     path: '/others',
     name: 'Others',
-    component: Others
+    component: Others,
+    children: [
+      {
+        path: 'aboutme',
+        name: 'Aboutme',
+        component: () => import('../views/Others/Aboutme.vue')
+      }
+    ]
   },
   {
     path: '*',

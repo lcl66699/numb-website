@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- 头部导航条 -->
-    <Nav />
+    <!-- <Nav /> -->
     <div class="headImg-box">
       <img src="../assets/images/banner1.png" alt="" />
       <div class="content ">
@@ -223,7 +223,7 @@
 </template>
 
 <script>
-import Nav from "../components/head/Nav";
+// import Nav from "../components/head/Nav";
 import HomeSwiper from "./HomeSwiper.vue";
 import HomeDate from "./HomeDate.vue";
 import HomeMydo from "./HomeMydo.vue";
@@ -243,7 +243,7 @@ export default {
     // console.log(str.toFixed(2));
   },
   components: {
-    Nav,
+    // Nav,
     HomeSwiper,
     HomeDate,
     HomeMydo,
@@ -505,7 +505,7 @@ export default {
   }
   // 关于
   .section {
-    background-image: url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/22.jpg);
+    background-image: url(../assets/images/bg1.jpg);
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;

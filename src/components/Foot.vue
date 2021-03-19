@@ -8,7 +8,7 @@
           <button class="">About Me</button>
         </div>
 
-        <div class="single-widget foot-flex">
+        <div class="single-widget1 foot-flex">
           <h2>相关链接</h2>
           <ul class="social-icon">
             <li class="active"><i class="fa fa-book"></i>博文</li>
@@ -19,18 +19,18 @@
           </ul>
         </div>
 
-        <div class="single-widget foot-flex">
+        <div class="single-widget2 foot-flex">
           <h2>联系我</h2>
-          <ul class="list">
-            <li><i class="fa fa-map"></i>地址:北京市朝阳区</li>
+          <ul id="list">
+            <li>地址:北京市朝阳区</li>
             <li class="myQQ">
-              <i class="fa fa-qq"></i>QQ: 768206581
+              QQ: 768206581
               <div class="myqq-box">
                 <img :src="myqq" alt="" />
               </div>
             </li>
 
-            <li><i class="fa fa-envelope"></i>邮箱: 768206581@qq.com</li>
+            <li>邮箱: 768206581@qq.com</li>
           </ul>
         </div>
       </div>
@@ -60,8 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer-head {
-  font: 14px Helvetica Neue, Helvetica, PingFang SC, \5fae\8f6f\96c5\9ed1,
-    Tahoma, Arial, sans-serif;
+  font: 14px Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
   overflow: hidden;
   width: 100%;
   line-height: 24px;
@@ -121,7 +120,7 @@ export default {
         }
       }
       //   右侧共用一个css
-      .single-widget {
+      .single-widget1 {
         margin-top: 30px;
         line-height: 24px;
         h2 {
@@ -143,7 +142,30 @@ export default {
           font-family: Roboto, sans-serif;
           margin-bottom: 5px;
         }
-        .myQQ {
+      }
+      .single-widget2 {
+        margin-top: 30px;
+        line-height: 24px;
+        h2 {
+          color: #fff;
+          font-size: 18px;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+        }
+        li {
+          margin-bottom: 10px;
+          width: 50%;
+          color: #eee;
+          cursor: pointer;
+        }
+        .list li {
+          color: #eee;
+          padding-left: 5px;
+          font-family: Roboto, sans-serif;
+          margin-bottom: 5px;
+        }
+        // hover的图
+        #list > .myQQ {
           position: relative;
           .myqq-box {
             display: none;
@@ -158,7 +180,7 @@ export default {
             }
           }
         }
-        .myQQ:hover>.myqq-box {
+        #list >.myQQ:hover  .myqq-box {
           display: block;
         }
       }

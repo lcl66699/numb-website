@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- 头部导航 -->
-    <Nav />
+ 
+   
     <el-button @click="qingqiu"> 点我请求</el-button>
 
     <div v-if="VideoList">
@@ -23,8 +23,7 @@
   </div>
 </template>
 <script>
-// @ is an alias to /src
-import Nav from "../../components/head/Nav";
+
 import { getVideohot } from "../../api/index";
 export default {
   name: "Home",
@@ -34,7 +33,7 @@ export default {
     };
   },
   components: {
-    Nav,
+
   },
   methods: {
     qingqiu() {

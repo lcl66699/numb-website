@@ -1,8 +1,7 @@
 <template>
   <div class="fightVirus-box">
     <div class="fightVirus-container">
-      <!-- 头部导航 -->
-      <Nav />
+    
       <div class="head-pic">
         <img src="../../assets/images/FightVirus/1.jpg" alt="" />
       </div>
@@ -51,8 +50,7 @@
   </div>
 </template>
 <script>
-// @ is an alias to /src
-import Nav from "../../components/head/Nav";
+
 import Covid from "./Covid/Covid";
 // import getCovid from "../../api/index";
 // import { postCovidCity } from "../../api/index";
@@ -79,7 +77,7 @@ export default {
   },
   name: "Home",
   components: {
-    Nav,
+
     Covid, //病毒信息
     Count,
     Mymap,
