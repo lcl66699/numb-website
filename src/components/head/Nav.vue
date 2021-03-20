@@ -4,7 +4,12 @@
       <div class="container">
         <!-- 头部logo -->
         <div @click="goHome" class="logo">
-          <img :src="NavLogo" alt="" />
+          <!-- <img :src="NavLogo" alt="" /> -->
+          <span class="logo-svg">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-watermelon"></use>
+            </svg>
+          </span>
           <div class="logo-text clearFix">
             <strong>西瓜汁</strong>
             <h3>这世上再难遇到我</h3>
@@ -147,10 +152,19 @@ $activateColor: #10aeb5;
       cursor: pointer;
       float: left;
       height: 90px;
-      img {
+      .logo-svg {
         float: left;
-        margin-top: 25px;
+        text-align: center;
+        margin-top: 12px;
+        svg {
+          line-height: 90px;
+          font-size: 44px;
+        }
       }
+      // img {
+      //   float: left;
+      //   margin-top: 25px;
+      // }
       .logo-text {
         float: left;
         font-weight: 700;

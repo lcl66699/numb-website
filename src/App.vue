@@ -1,6 +1,6 @@
 <template>
   <div id="master">
-    <Nav/>
+    <Nav />
     <router-view />
     <!-- 返回顶部 -->
     <GoTop />
@@ -8,22 +8,30 @@
 </template>
 <script>
 // 导航条
-import Nav from './components/head/Nav'
+import Nav from "./components/head/Nav";
 // 返回顶部
 import GoTop from "./components/GoTop";
+
 export default {
   data() {
     return {};
   },
   components: {
     GoTop,
-    Nav
+    Nav,
   },
   mounted() {},
   methods: {},
 };
 </script>
 <style lang="scss">
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 .go-top {
   display: none;
   transition: all 1s;

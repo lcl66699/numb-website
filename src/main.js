@@ -6,6 +6,8 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
+// 引入字体
+import './assets/iconfont.js'
 // 引入全局的样式
 import '@/assets/css/common.css'
 // 点击之后的爱心

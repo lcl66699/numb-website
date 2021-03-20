@@ -5,9 +5,14 @@
     <div class="headImg-box">
       <img src="../assets/images/banner1.png" alt="" />
       <div class="content ">
-        <h3>西瓜汁 : 记录点滴，分享美好，遇见更好的自己</h3>
         <p>Hi，楼上雅间请！</p>
-        <p>有什么好说的呢？我真是太喜欢吃果冻了</p>
+        <h3>
+          记录点滴，分享美好，遇见更好的自己。
+        </h3>
+        <!-- <p>有什么好说的呢？我真是太喜欢吃果冻了</p> -->
+        <p>
+          风景一直都在，但年少轻狂的心会慢慢消失，希望我们保持热爱在路上寻找内心深处的自己。
+        </p>
       </div>
     </div>
     <HomeMydo />
@@ -19,7 +24,10 @@
       <div class="content-page">
         <div class="page-header">
           <h1 class="pull-left">家常便饭</h1>
-          <span class="pull-right"><a href="index.html">更多</a> </span>
+          <span class="pull-right">
+            <!-- <a href="index.html"></a> -->
+            <router-link to="/foods">更多</router-link>
+          </span>
         </div>
 
         <div class="page-content">
@@ -27,12 +35,12 @@
             <a href="##">
               <div class="picture">
                 <img
-                  src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                  src="../assets/images/homeImgs/food2.jpg"
                   class="img-responsive"
                 />
-                <h4>走着嗨活动标题</h4>
+                <h4>边烤边吃&啤酒+烧烤</h4>
                 <p>
-                  2015-7-15
+                  走过路过不要错过
                 </p>
               </div>
             </a>
@@ -41,12 +49,12 @@
             <a href="##">
               <div class="picture">
                 <img
-                  src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                  src="../assets/images/homeImgs/huoguo.jpg"
                   class="img-responsive"
                 />
-                <h4>走着嗨活动标题</h4>
+                <h4>没有什么是一顿火锅解决不了的</h4>
                 <p>
-                  2015-7-15
+                  实在不行就两顿~
                 </p>
               </div>
             </a>
@@ -55,12 +63,12 @@
             <a href="##">
               <div class="picture">
                 <img
-                  src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                  src="../assets/images/homeImgs/food1.jpg"
                   class="img-responsive"
                 />
-                <h4>走着嗨活动标题</h4>
+                <h4>简简单单的烤桃酥</h4>
                 <p>
-                  2015-7-15
+                  普普通通的烘培日常
                 </p>
               </div>
             </a>
@@ -76,24 +84,33 @@
           <!-- 标题 -->
           <div class="page-header">
             <h1 class="pull-left">随手拍</h1>
-            <span class="pull-right"><a href="index.html">更多</a> </span>
+            <span class="pull-right">
+              <!-- <a href="index.html">更多</a>  -->
+              <router-link to="/photos">更多</router-link>
+            </span>
           </div>
           <!-- 第一行图 -->
           <div class="page-content-row">
             <div id="photosHover" class="content-row-left">
               <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                src="../assets/images/homeImgs/xiyang1.jpg"
                 class="img-responsive"
               />
-              <p class="absolute-title">31232132121</p>
+
+              <p class="absolute-title">
+                谁能想到 如今年轻人下班之后 最大的抚慰 是能拍到当天的夕阳呢
+                怀念那些可以拍到夕阳的日子，可人总要向前走。
+                <br />
+                多拍些照片吧，以后回忆无数次
+              </p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover-left" class="content-row-right">
               <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                src="../assets/images/homeImgs/xiyang3.jpg"
                 class="img-responsive"
               />
-              <p class="absolute-title">2222222</p>
+              <p class="absolute-title">启峰山下看日落</p>
               <div class="hidden"></div>
             </div>
           </div>
@@ -101,34 +118,34 @@
           <div class="page-content-rowBottom">
             <div id="photosHover" class="bottom-photos">
               <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                src="../assets/images/homeImgs/bookimg.jpg"
                 class="img-responsive"
               />
-              <p class="absolute-title">2222222</p>
+              <p class="absolute-title">2018年的某一天，在教六实验室的记录</p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover-left" class="bottom-photos">
               <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                src="../assets/images/homeImgs/school.jpg"
                 class="img-responsive"
               />
-              <p class="absolute-title">2222222</p>
+              <p class="absolute-title">就算大雨让这座城市颠倒</p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover" class="bottom-photos">
               <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                src="../assets/images/homeImgs/yangxue.jpg"
                 class="img-responsive"
               />
-              <p class="absolute-title">2222222</p>
+              <p class="absolute-title">夕阳无限好</p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover-left" class="bottom-photos">
               <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+                src="../assets/images/homeImgs/xiyang5.jpg"
                 class="img-responsive"
               />
-              <p class="absolute-title">2222222</p>
+              <p class="absolute-title">科二练车时的黄昏</p>
               <div class="hidden"></div>
             </div>
           </div>
@@ -141,61 +158,64 @@
       <div class="wrapper">
         <!-- 标题 -->
         <div class="page-header">
-          <h1 class="pull-left">胡思乱想</h1>
-          <span class="pull-right"><a href="index.html">更多</a> </span>
+          <h1 class="pull-left">聊聊</h1>
+          <span class="pull-right">
+            <router-link to="/chat">更多</router-link>
+          </span>
         </div>
 
         <div class="think-display">
           <div class="think-son">
             <img
-              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+              src="../assets/images/homeImgs/tongyang.jpg"
               class="img-responsive"
             />
             <div class="think-content">
-              <h4>这是标题或者嗨客名称</h4>
+              <h4>保护姑娘，贯彻落实</h4>
               <p>
-                这里是嗨客说的话，可以是很多，或者是嗨客的座右铭。可以很长很长很长很长
+                当旋律响起来，瞬间全场的激情都被点燃了，再见杰克，再见萨菲娜。
               </p>
-              <p style="text-align: right;">--签名</p>
+              <p style="text-align: right;">--痛痒</p>
             </div>
           </div>
           <div class="think-son">
             <img
-              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+              src="../assets/images/homeImgs/tx1.png"
               class="img-responsive"
             />
             <div class="think-content">
-              <h4>这是标题或者嗨客名称</h4>
+              <h4>我们都有美好的未来</h4>
               <p>
-                这里是嗨客说的话，可以是很多，或者是嗨客的座右铭。可以很长很长很长很长
+                二手的唢呐，万青的小号，扶我起来，我又可以了。
               </p>
-              <p style="text-align: right;">--签名</p>
+              <p style="text-align: right;">--愿爱无忧</p>
             </div>
           </div>
           <div class="think-son">
             <img
-              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+              src="../assets/images/homeImgs/tx3.png"
               class="img-responsive"
             />
             <div class="think-content">
-              <h4>这是标题或者嗨客名称</h4>
+              <h4>保持理智</h4>
               <p>
-                这里是嗨客说的话，可以是很多，或者是嗨客的座右铭。可以很长很长很长很长
+                飞机飞过天空，天空之城。
+                港岛妹妹，你献给我的西班牙馅饼，甜蜜地融化了我，天空之城在哭泣。
               </p>
-              <p style="text-align: right;">--签名</p>
+              <p style="text-align: right;">--热心市民李先生</p>
             </div>
           </div>
           <div class="think-son">
             <img
-              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbbs.jooyoo.net%2Fattachment%2FMon_1111%2F24_183950_2339bb7e81d0e81.jpg&refer=http%3A%2F%2Fbbs.jooyoo.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617113921&t=4d310bcf1e61a4ac356945ae3ab448f4"
+              src="../assets/images/homeImgs/tx2.png"
               class="img-responsive"
             />
             <div class="think-content">
-              <h4>这是标题或者嗨客名称</h4>
+              <h4>故事你真的在听吗</h4>
               <p>
-                这里是嗨客说的话，可以是很多，或者是嗨客的座右铭。可以很长很长很长很长
+                层楼终究误少年,自由早晚乱余生。 你我山前没相见，山后别相逢。
               </p>
-              <p style="text-align: right;">--签名</p>
+              <p style="text-align: right;">--郭源潮</p>
             </div>
           </div>
         </div>
@@ -205,19 +225,22 @@
     <!-- 关于 -->
     <div class="section">
       <ul class="inner">
-        <li>关于</li>
-        <li>+友情链接</li>
+        <li @click="toaboutme">关于</li>
+        <li @click="tomusic">+网抑云音乐</li>
       </ul>
     </div>
     <!-- 个人记录 -->
     <div class="section-own">
       <div class="inner">
         <h1>LCL的个人博客</h1>
-        <p>美好的东西每天都在消失，但明天永远不会停止来临</p>
+        <!-- <p>美好的东西每天都在消失，但明天永远不会停止来临</p> -->
+        <p>
+          “不管做什么，都要做到极致，工作就工作、笑就大笑、吃饭的时候像是最后一餐那样去享受”
+        </p>
       </div>
     </div>
-    <!-- 轮播图 -->
-    <Foot />
+    <!-- 页脚 -->
+    <Foot ref="foot" />
     <!-- <HomeSwiper /> -->
   </div>
 </template>
@@ -227,6 +250,9 @@
 import HomeSwiper from "./HomeSwiper.vue";
 import HomeDate from "./HomeDate.vue";
 import HomeMydo from "./HomeMydo.vue";
+// import a from "../assets/images/FightVirus/1.jpg";
+// import gf from "../assets/images/homeImgs/food1.jpg";
+// import eqwewq from "../assets/images/homeImgs/food2.jpg";
 // 页脚
 import Foot from "../components/Foot.vue";
 export default {
@@ -249,7 +275,16 @@ export default {
     HomeMydo,
     Foot,
   },
-  methods: {},
+  methods: {
+    toaboutme() {
+      // console.log(this.$refs);
+      // 调用子组件方法
+      this.$refs.foot.aboutme();
+    },
+    tomusic() {
+      this.$router.push("/music");
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -267,7 +302,7 @@ export default {
       background-color: rgba(0, 0, 0, 0.5);
       color: seashell;
       width: 500px;
-      height: 300px;
+      // height: 300px;
       padding: 40px;
       top: 100px;
       left: 165px;
@@ -401,7 +436,7 @@ export default {
       position: absolute;
       top: 20px;
       left: 20px;
-      color: #007aff;
+      color: #fff;
 
       opacity: 0;
     }
@@ -478,6 +513,7 @@ export default {
           box-shadow: 2px 2px 5px #f5f5f5;
         }
         .think-content {
+          min-height: 220px;
           background-color: #f7f7f7;
           padding: 60px 15px 15px;
           text-align: left;

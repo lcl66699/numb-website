@@ -2,47 +2,75 @@
   <div class="mydo">
     <h2 class="dotitle">我正在做什么 . . .</h2>
     <p class="do-content">
-      这里主要是记录一些日常生活、兴趣爱好、网抑云热评、常用资源等
+      这里主要是记录一些日常生活、兴趣爱好、网抑云音乐/热评、常用资源等
     </p>
     <div class="wrapper">
       <div class="three">
         <div class="do-box">
           <div class="web-face">
-            <div class="icon"><i>图标</i></div>
-            <span>总是等</span>
-          </div>
-          <div class="back-face">
-            <span>总是等</span>
-            <p>我永远是你黑名单里的成员 我连重蹈覆辙的机会都没有</p>
-          </div>
-        </div>
-        <div class="do-box">
-          <div class="web-face">
-            <div class="icon">
-              <i>图标2</i>
+            <div class="icon-me">
+              <!-- <i>图标</i> -->
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-strawberry"></use>
+              </svg>
             </div>
-            <span>numb</span>
+            <span>总是等</span>
           </div>
           <div class="back-face">
-            <span>numb</span>
+            <span>just do it!</span>
             <p>
-              你算是炎日里的一点微风， 是沙漠里的一小片绿洲，
-              从来不是因为我而存在
+              人这辈子总是在等，等下次，等不忙，等有条件，等有钱，可后来等没了选择，等来了遗憾，等到了错过.
+              <br />
+              去生活,去寻觅,为了自己的人生而奔赴
+              <br />
+              去做你不敢做的事,去见你不敢见的人
+              <br />
+              不要犹豫 , just do it!
             </p>
           </div>
         </div>
         <div class="do-box">
           <div class="web-face">
-            <div class="icon">
-              <i>图标3</i>
+            <div class="icon-me">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-blueberry"></use>
+              </svg>
             </div>
-            <span>皮皮虾我们走</span>
+            <span>numb</span>
           </div>
           <div class="back-face">
-            <span>皮皮虾我们走</span>
+            <span>在路上</span>
             <p>
-              言虽有穷而意无尽 希望你遇到一个人 他看你时眼神温柔
-              愿意陪你做很多事
+              numb是一首充满力量的歌。
+            </p>
+            <p>
+              少年的梦,不应止于心动,更应付出行动
+              <br />
+              有一天你会和我一样。
+              <br />
+              偶尔惆怅 偶尔叹息 偶尔向上 生生不息。
+            </p>
+          </div>
+        </div>
+        <div class="do-box">
+          <div class="web-face">
+            <div class="icon-me">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-avocado"></use>
+              </svg>
+            </div>
+            <span>百年孤独</span>
+          </div>
+          <div class="back-face">
+            <span>百年孤独</span>
+            <p>
+              我家门前有两棵树,一棵是枣树,另一棵也是枣树;
+            </p>
+            <p>
+              我家床边有两双鞋,一双是我的,另一双也是我的;
+            </p>
+            <p>
+              我的床上有两个枕头,一个是我的,另一个也是我的.
             </p>
           </div>
         </div>
@@ -103,9 +131,10 @@ export default {
           justify-content: center;
           box-shadow: 0 5px 20px 0 rgba(0, 81, 250, 0.1);
           transition: all 0.5s ease;
-          .icon {
+          .icon-me {
             height: 80px;
-            i {
+            i,
+            svg {
               font-size: 65px;
             }
           }
@@ -123,6 +152,7 @@ export default {
           }
         }
         .back-face {
+          line-height: 22px;
           position: absolute;
           top: 0;
           left: 0;

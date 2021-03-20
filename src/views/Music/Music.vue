@@ -31,8 +31,8 @@
               >Mv</el-menu-item
             >
             <el-menu-item
-              :class="isavtivedHome == 'Tets' ? 'isavtivedHome' : ''"
-              @click="changeCompLeft('Tets')"
+              :class="isavtivedHome == 'MeMusic' ? 'isavtivedHome' : ''"
+              @click="changeCompLeft('MeMusic')"
               >我的信息</el-menu-item
             >
           </el-menu>
@@ -70,7 +70,7 @@ export default {
   components: {
     Foot,
     NewMusic, //最新音乐
-    Tets: () => import("./Tets.vue"),
+    MeMusic: () => import("./MeMusic.vue"),
     BannerIndex: () => import("./BannerIndex.vue"), //歌单
     MusicRanking: () => import("./MusicRanking.vue"), //排行
     Video: () => import("./Video/Video.vue"), //排行

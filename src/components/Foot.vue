@@ -5,17 +5,52 @@
         <div class="footer-logo foot-flex">
           <h2>lcl个人博客</h2>
           <p>人生唯一确定的就是不确定的人生</p>
-          <button class="">About Me</button>
+          <button @click="aboutme" class="">About Me</button>
         </div>
 
         <div class="single-widget1 foot-flex">
           <h2>相关链接</h2>
           <ul class="social-icon">
-            <li class="active"><i class="fa fa-book"></i>博文</li>
-            <li class="active"><i class="fa fa-comments"></i>留言</li>
-            <li class="active"><i class="fa fa-share"></i>资源</li>
-            <li class="active"><i class="fa fa-snowflake-o"></i>日记</li>
-            <li class="active"><i class="fa fa-files-o"></i>归档</li>
+            <li class="active">
+              <router-link to="/virus">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-yiqingtianbao"></use>
+                </svg>
+                抗击疫情</router-link
+              >
+            </li>
+            <li class="active">
+              <router-link to="/music">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-yinyue"></use>
+                </svg>
+                音乐</router-link
+              >
+            </li>
+            <li class="active">
+              <router-link to="/photos">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-paizhao"></use>
+                </svg>
+                随手拍</router-link
+              >
+            </li>
+            <li class="active">
+              <router-link to="/foods">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon--"></use>
+                </svg>
+                家常便饭</router-link
+              >
+            </li>
+            <li class="active">
+              <router-link to="/chat">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-liuyan"></use>
+                </svg>
+                聊聊</router-link
+              >
+            </li>
           </ul>
         </div>
 
@@ -37,8 +72,8 @@
     </div>
     <div id="footer-bottom">
       <p>
-        Copyrigh; 2019-2020 numb个人博客 All Rights Reserved V.5.1.3
-        粤ICP备1231100号
+        Copyrigh; 2020-2021 numb个人博客 All Rights Reserved V-1.0.0
+        黑ICP备20003708号
       </p>
     </div>
   </footer>
@@ -53,7 +88,11 @@ export default {
     };
   },
   components: {},
-  methods: {},
+  methods: {
+    aboutme() {
+      this.$router.push("/others/aboutme");
+    },
+  },
   mounted() {},
 };
 </script>
@@ -129,13 +168,14 @@ export default {
           margin-bottom: 20px;
           text-transform: uppercase;
         }
-        li {
+        li a {
           margin-bottom: 10px;
           float: left;
           width: 50%;
           color: #eee;
           cursor: pointer;
         }
+
         .list li {
           color: #eee;
           padding-left: 5px;
@@ -180,7 +220,7 @@ export default {
             }
           }
         }
-        #list >.myQQ:hover  .myqq-box {
+        #list > .myQQ:hover .myqq-box {
           display: block;
         }
       }
