@@ -1,5 +1,8 @@
 
 module.exports = {
+    publicPath: './',//打包路径
+    productionSourceMap: false,//正式优化
+    // 跨域
     devServer: {
         open: true, //是否自动弹出浏览器页面
         proxy: {

@@ -7,15 +7,14 @@
     <div class="wrapper">
       <div class="aboutme-content">
         <div class="aboutme-img">
-          <img :src="aimg" alt="" />
+          <img src="../../assets/images/homeImgs/melcl.jpg" alt="" />
         </div>
         <div class="aboutme-right">
           <div class="author_info">
             <h3>Hi, I am numb author</h3>
             <p>
               95后的我，出生于黑龙江某乡村，热爱技术，更热爱生活。
-              是一个普通的前端开发程序员
-              ，这个网站初衷是记录生活，下一步打算开发博客功能，记录工作中遇到的难题
+              是一个普通的前端开发程序员，这个网站初衷是记录生活，下一步打算开发博客功能，记录工作中遇到的难题
               ，此外对当前导航路由没有开发的模块继续开发等。
             </p>
             <p>
@@ -43,7 +42,6 @@
               本网页还有很多功能尚未开发，我也将会继续完善，继续写下去，增加更多的创新功能与技术栈。
             </p>
             <p>祝大家平安喜乐，所得皆所期。</p>
-            <br />
           </div>
         </div>
       </div>
@@ -53,13 +51,10 @@
 </template>
 
 <script>
-import a from "../../assets/images/homeImgs/melcl.jpg";
 import Foot from "../../components/Foot";
 export default {
   data() {
-    return {
-      aimg: a,
-    };
+    return {};
   },
   components: {
     Foot,
