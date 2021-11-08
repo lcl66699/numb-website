@@ -16,40 +16,40 @@
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon-yiqingtianbao"></use>
                 </svg>
-                抗击疫情</router-link
-              >
+                抗击疫情
+              </router-link>
             </li>
             <li class="active">
               <router-link to="/music">
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon-yinyue"></use>
                 </svg>
-                音乐</router-link
-              >
+                音乐
+              </router-link>
             </li>
             <li class="active">
               <router-link to="/photos">
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon-paizhao"></use>
                 </svg>
-                随手拍</router-link
-              >
+                随手拍
+              </router-link>
             </li>
             <li class="active">
               <router-link to="/foods">
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon--"></use>
                 </svg>
-                家常便饭</router-link
-              >
+                家常便饭
+              </router-link>
             </li>
             <li class="active">
               <router-link to="/chat">
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon-liuyan"></use>
                 </svg>
-                聊聊</router-link
-              >
+                聊聊
+              </router-link>
             </li>
           </ul>
         </div>
@@ -72,7 +72,7 @@
     </div>
     <div id="footer-bottom">
       <p>
-        Copyrigh; 2020-2021 numb个人博客 All Rights Reserved V-1.0.0
+        Copyrigh; 2020-2021 numb的个人空间 All Rights Reserved V-1.0.0
         黑ICP备20003708号
       </p>
     </div>
@@ -113,6 +113,7 @@ export default {
     margin: 0 auto;
     position: relative;
     .foot-display {
+      padding: 0 10px;
       display: flex;
       .foot-flex {
         flex: 1;

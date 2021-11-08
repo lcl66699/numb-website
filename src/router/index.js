@@ -9,7 +9,6 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 // 按顺序引入
-import Home from '../views/Home.vue'
 import Music from '@/views/Music/Music.vue'
 import Foods from '@/views/Foods/Foods.vue'
 import Photos from '@/views/Photos/Photos.vue'
@@ -21,85 +20,107 @@ import SingerDetail from "@/views/Music/SingerDetail.vue";
 import MusicListTable from '@/views/Music/MusicListTable.vue'
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/welcome",
+    name: 'welcome',
+    component: () => import('../views/FirstCome/FirstCome.vue')
   },
   {
-    path: '/virus',
-    name: 'virus',
-    component: () => import('../views/FightVirus/FightVirus.vue')
-  },
-  {
-    path: '/music',
-    name: 'Music',
-    component: Music,
+    path: "/",
+    // redirect重定向
+    // hidden: true,
+    component: () => import('../views/HomeNav.vue'),
+    redirect: "/",
     children: [
-    ]
-  },
-  {
-    path: '/music/songlist/:id',
-    name: 'SingerDetail',
-    component: SingerDetail,
-    //歌单详情中的子组件歌曲列表,评论
-    children: [//隐式传参声明的name
-      { name: 'musicPage', path: '/musicPage', component: MusicListTable },
-      //评论模块子组件
-      { path: '/comment/:id', component: () => import('../views/Music/CommentPage') }
-    ]
-  },
-  //跳转mv视频模块
-  {
-    path: '/video/:id',
-    name: 'VideoPage',
-    component: () => import('../views/Music/Video/VideoPage')
-  },
-  //视频播放页
-  {
-    path: '/videoPlay/:id',
-    name: 'videoPlay',
-    component: () => import('../views/Music/Video/VideoPlayPage')
-  },
-  {
-    path: '/foods',
-    name: 'Foods',
-    component: Foods
-  },
-  {
-    path: '/photos',
-    name: 'Photos',
-    component: Photos
-  },
-  {
-    path: '/chat',
-    name: 'Chat',
-    component: Chat,
-    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: () => import('../views/Home.vue')
+      },
+      {
+        path: '/virus',
+        name: 'virus',
+        component: () => import('../views/FightVirus/FightVirus.vue')
+      },
+      {
+        path: '/music',
+        name: 'Music',
+        component: Music,
+        children: [
+        ]
+      },
+      {
+        path: '/music/songlist/:id',
+        name: 'SingerDetail',
+        component: SingerDetail,
+        //歌单详情中的子组件歌曲列表,评论
+        children: [//隐式传参声明的name
+          { name: 'musicPage', path: '/musicPage', component: MusicListTable },
+          //评论模块子组件
+          { path: '/comment/:id', component: () => import('../views/Music/CommentPage') }
+        ]
+      },
+      //跳转mv视频模块
+      {
+        path: '/video/:id',
+        name: 'VideoPage',
+        component: () => import('../views/Music/Video/VideoPage')
+      },
+      //视频播放页
+      {
+        path: '/videoPlay/:id',
+        name: 'videoPlay',
+        component: () => import('../views/Music/Video/VideoPlayPage')
+      },
+      {
+        path: '/foods',
+        name: 'Foods',
+        component: Foods
+      },
+      {
+        path: '/photos',
+        name: 'Photos',
+        component: Photos
+      },
+      {
+        path: '/chat',
+        name: 'Chat',
+        component: Chat,
+        children: [
 
+          {
+            path: 'qq',
+            name: 'QQ',
+            component: QQ
+          }
+        ]
+      },
       {
-        path: 'qq',
-        name: 'QQ',
-        component: QQ
-      }
+        path: '/lemon',
+        name: 'Lemon',
+        component: Lemon
+      },
+      {
+        path: '/others',
+        name: 'Others',
+        component: Others,
+        children: [
+          {
+            path: 'aboutme',
+            name: 'Aboutme',
+            component: () => import('../views/Others/Aboutme.vue')
+          }
+        ]
+      },
+      {
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/UserInfo/UserInfo.vue')
+      },
     ]
   },
-  {
-    path: '/lemon',
-    name: 'Lemon',
-    component: Lemon
-  },
-  {
-    path: '/others',
-    name: 'Others',
-    component: Others,
-    children: [
-      {
-        path: 'aboutme',
-        name: 'Aboutme',
-        component: () => import('../views/Others/Aboutme.vue')
-      }
-    ]
-  },
+
+
+
   {
     path: '*',
     name: 'page404',

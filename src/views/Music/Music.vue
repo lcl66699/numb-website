@@ -3,38 +3,16 @@
     <!-- 左侧个性推荐 -->
     <div class="wrapper">
       <div class="display">
-        <el-header
-          style="border-bottom: 1px solid rgb(230,230,230)"
-          height="100%;"
-        >
+        <el-header style="border-bottom: 1px solid rgb(230,230,230)" height="100%;">
           <el-menu style="width: 250px;float:left">
-            <el-menu-item
-              :class="isavtivedHome == 'BannerIndex' ? 'isavtivedHome' : ''"
-              @click="changeCompLeft('BannerIndex', this)"
-              >个性推荐</el-menu-item
-            >
-            <el-menu-item
-              :class="isavtivedHome == 'MusicRanking' ? 'isavtivedHome' : ''"
-              @click="changeCompLeft('MusicRanking')"
-              >排行榜</el-menu-item
-            >
+            <el-menu-item :class="isavtivedHome == 'BannerIndex' ? 'isavtivedHome' : ''" @click="changeCompLeft('BannerIndex', this)">个性推荐</el-menu-item>
+            <el-menu-item :class="isavtivedHome == 'MusicRanking' ? 'isavtivedHome' : ''" @click="changeCompLeft('MusicRanking')">排行榜</el-menu-item>
 
-            <el-menu-item
-              :class="isavtivedHome == 'NewMusic' ? 'isavtivedHome' : ''"
-              @click="changeCompLeft('NewMusic')"
-            >
+            <el-menu-item :class="isavtivedHome == 'NewMusic' ? 'isavtivedHome' : ''" @click="changeCompLeft('NewMusic')">
               最新音乐
             </el-menu-item>
-            <el-menu-item
-              :class="isavtivedHome == 'Video' ? 'isavtivedHome' : ''"
-              @click="changeCompLeft('Video')"
-              >Mv</el-menu-item
-            >
-            <el-menu-item
-              :class="isavtivedHome == 'MeMusic' ? 'isavtivedHome' : ''"
-              @click="changeCompLeft('MeMusic')"
-              >我的信息</el-menu-item
-            >
+            <el-menu-item :class="isavtivedHome == 'Video' ? 'isavtivedHome' : ''" @click="changeCompLeft('Video')">Mv</el-menu-item>
+            <el-menu-item :class="isavtivedHome == 'MeMusic' ? 'isavtivedHome' : ''" @click="changeCompLeft('MeMusic')">我的信息</el-menu-item>
           </el-menu>
         </el-header>
 

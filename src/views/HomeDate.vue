@@ -1,18 +1,31 @@
 <template>
   <div class="clock-box">
-    <div class="mydate">
+    <div class="mydate ">
       <h3>The time is now</h3>
-      <div class="time">
+      <div class="time wow fadeInDown">
         <div>
-          <span class="hour">{{ hours }}</span>
+          <span class="hour">{{ fixNum(Year) }}</span>
+          <span>Year</span>
+        </div>
+        <div>
+          <span class="hour">{{fixNum(Month)  }}</span>
+          <span>Month</span>
+        </div>
+        <div>
+          <span class="hour">{{ fixNum(Day)  }}</span>
+          <span>Day</span>
+        </div>
+
+        <div>
+          <span class="hour">{{ fixNum(hours)  }}</span>
           <span>Hours</span>
         </div>
         <div>
-          <span class="minutes">{{ minutes }}</span>
+          <span class="minutes">{{fixNum(minutes)   }}</span>
           <span>Minutes</span>
         </div>
         <div class="seconds-box">
-          <span class="seconds">{{ seconds }}</span>
+          <span class="seconds">{{ fixNum(seconds)  }}</span>
           <span>Seconds</span>
         </div>
       </div>
@@ -27,31 +40,45 @@ export default {
       hours: "",
       minutes: "",
       seconds: "",
+      Year: "",
+      Month: "",
+      Day: "",
+      clockTimer: null,
     };
   },
   mounted() {
-    
-    let setClock = () => {
-      let hours = new Date().getHours();
-      let minutes = new Date().getMinutes();
-      let seconds = new Date().getSeconds();
-      this.hours = hours;
-      this.minutes = minutes;
-      this.seconds = seconds;
-    };
-    // setClock();
-
-    // 执行时钟定时器
-    this.clockTimer = setInterval(setClock, 1000);
-
-    // 只执行一次 在销毁前清定时器
-    this.$once("hook:beforeDestroy", () => {
-      clearInterval(this.clockTimer);
-    });
+    this.init();
   },
-  //   beforeDestroy() {
-  //     clearInterval(this.clockTimer);
-  //   },
+  methods: {
+    init() {
+      let setClock = () => {
+        var date = new Date();
+        this.Year = date.getFullYear();
+        this.Month = date.getMonth() + 1;
+        this.Day = date.getDate();
+        this.hours = date.getHours();
+        this.minutes = date.getMinutes();
+        this.seconds = date.getSeconds();
+      };
+
+      // 执行时钟定时器
+      if (!this.clockTimer) {
+        setClock();
+      }
+      this.clockTimer = setInterval(setClock, 1000);
+
+      // 只执行一次 在销毁前清定时器
+      this.$once("hook:beforeDestroy", () => {
+        clearInterval(this.clockTimer);
+      });
+    },
+    fixNum(number, digits = 2) {
+      if (Number(number) < 10) {
+        return "0" + String(number);
+      }
+      return number;
+    },
+  },
 };
 </script>
 
@@ -65,7 +92,7 @@ export default {
   min-height: 60vh;
   background: #060a1f;
   background: rgba(#080a23, 0.9); //颜色比较浅
-  //   background: #10AEB5; //主题色
+  // background: #10aeb5; //主题色
   font-size: 20px;
   height: 500px;
 
@@ -120,6 +147,24 @@ export default {
       }
       div:last-child span:last-child {
         background: #ec0062;
+      }
+      div:nth-child(1) span {
+        background: #39766d;
+      }
+      div:nth-child(1) span:last-child {
+        background: #26504a;
+      }
+      div:nth-child(2) span {
+        background: #39766d;
+      }
+      div:nth-child(2) span:last-child {
+        background: #26504a;
+      }
+      div:nth-child(3) span {
+        background: #39766d;
+      }
+      div:nth-child(3) span:last-child {
+        background: #26504a;
       }
     }
   }

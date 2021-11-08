@@ -9,10 +9,10 @@
 <script>
 import echarts from "echarts";
 // 引入中国地图，仅针对4版本的echarts
-import "../../../../node_modules/echarts/map/js/china";
-// import "../../../../node_modules/echarts";
-import "../../../../node_modules/echarts/map/js/world";
+// import "../../../../node_modules/echarts/map/js/china";
+// import "../../../../node_modules/echarts/map/js/world";
 // import { postCovidCity } from "../../../api/index";
+import chinaMap from "./china.json";
 import Virus from "../../../api/index";
 export default {
   data() {
@@ -33,15 +33,13 @@ export default {
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById("main"));
+    // var myChart = echarts.init(document.getElementById("main"));
 
     // 请求数据
     Virus.postCovidCity().then((data) => {
       console.log("地图疫情数据", data.data);
       if (data.data.code == 200) {
         let CovidCityList = this.getlistdata(data.data.newslist);
-        // console.log("心", CovidCityList);
-
         // 指定图表的配置项和数据
         var option = {
           title: {
@@ -105,7 +103,8 @@ export default {
         };
 
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        myChart.registerMap("china", chinaMap);
+        // myChart.setOption(option);
       } else {
         // 请求不到数据,展示基础的地图
 

@@ -1,7 +1,7 @@
 <template>
   <div class="fightVirus-box">
     <div class="fightVirus-container">
-    
+
       <div class="head-pic">
         <img src="../../assets/images/FightVirus/1.jpg" alt="" />
       </div>
@@ -11,24 +11,16 @@
       <Count :countdata="countdata" />
       <!-- 地图 -->
       <div>
-        <Mymap />
+        <!-- <Mymap /> -->
       </div>
 
       <!-- 海外疫情表格信息-->
       <!-- 按钮切换 -->
       <div class="switch-country">
-        <p
-          @click="ChinaNcov"
-          :class="[isShow ? '' : 'countryActivate']"
-          size="mini"
-        >
+        <p @click="ChinaNcov" :class="[isShow ? '' : 'countryActivate']" size="mini">
           中国
         </p>
-        <p
-          @click="ForeignNcov"
-          :class="[isShow ? 'countryActivate' : '']"
-          size="mini"
-        >
+        <p @click="ForeignNcov" :class="[isShow ? 'countryActivate' : '']" size="mini">
           海外
         </p>
       </div>
@@ -50,7 +42,6 @@
   </div>
 </template>
 <script>
-
 import Covid from "./Covid/Covid";
 // import getCovid from "../../api/index";
 // import { postCovidCity } from "../../api/index";
@@ -77,7 +68,6 @@ export default {
   },
   name: "Home",
   components: {
-
     Covid, //病毒信息
     Count,
     Mymap,

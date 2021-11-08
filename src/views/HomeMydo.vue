@@ -1,7 +1,7 @@
 <template>
   <div class="mydo">
-    <h2 class="dotitle">我正在做什么 . . .</h2>
-    <p class="do-content">
+    <h2 class="dotitle wow bounceInRight">我正在做什么 . . .</h2>
+    <p class="do-content wow bounceInRight">
       这里主要是记录一些日常生活、兴趣爱好、网抑云音乐/热评、常用资源等
     </p>
     <div class="wrapper">

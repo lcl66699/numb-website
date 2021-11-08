@@ -9,7 +9,23 @@
           <!-- </div> -->
         </div>
       </swiper-slide>
-      <swiper-slide> </swiper-slide>
+      <swiper-slide>
+        <div class="swiper-slide">
+          <p class="ani resize" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+
+        </div>
+
+        <div class="ani resize" style="width:120px;height:110px;left:110px;top:184px;z-index:3;" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="1s">
+          <div class="txt">
+            <p style="width:15px;color:#b60927; display:inline-block; font-size:90%; line-height:1; margin-right:10px;">愿您羊年运旺福旺</p>
+            <p style="width:15px;color:#b60927; display:inline-block; font-size:90%; line-height:1; margin-right:10px;">条条祝福给您送上</p>
+            <p style="width:15px;color:#b60927; display:inline-block; font-size:90%; line-height:1; margin-right:10px;">美丽花灯传递吉祥</p>
+            <p style="width:15px;color:#b60927; display:inline-block; font-size:90%; line-height:1; margin-right:10px;">圆圆汤圆味道芬芳</p>
+          </div>
+
+        </div>
+      </swiper-slide>
       <swiper-slide>Slide 3</swiper-slide>
       <swiper-slide>Slide 4</swiper-slide>
       <swiper-slide>Slide 5</swiper-slide>
@@ -48,7 +64,7 @@ export default {
   },
   mounted() {
     // console.log("Current Swiper instance object", this.swiper);
-    // this.swiper.slideTo(3, 1000, false);
+    this.swiper.slideTo(3, 1000, false);
   },
 };
 </script>

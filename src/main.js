@@ -14,11 +14,15 @@ import '@/assets/css/common.css'
 import './components/clickLove.js'
 // 轮播图
 import VueAwesomeSwiper from 'vue-awesome-swiper' //导入两个组件
-// import style (>= Swiper 6.x)
 import 'swiper/swiper-bundle.min.css' //使用样式
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'; //导入模组
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]); //使用模组
-Vue.use(VueAwesomeSwiper, /* { default options with global component } */)//全局注册插件
+Vue.use(VueAwesomeSwiper)//全局注册插件
+
+//动画
+import animated from 'animate.css'
+Vue.use(animated)
+// import 'animate.css'
 
 import axios from 'axios'
 //配置请求根路径 跨域在vue.config.js中

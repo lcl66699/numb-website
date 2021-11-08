@@ -1,23 +1,10 @@
 <template>
-  <div
-    :class="{
+  <div :class="{
       searchDefaultStyle: isSearchDefault,
       searchFocusStyle: isSearchFocus,
-    }"
-    class="search-box"
-    ref="searchBox"
-  >
+    }" class="search-box" ref="searchBox">
     <button id="toSearch" @click="searchButton"></button>
-    <input
-      ref="searchInput"
-      @keyup.enter="searchButton"
-      v-model="searchText"
-      class="search-input"
-      @focus="searchFocus"
-      @blur="searchBlur"
-      placeholder="试试：百度搜索"
-      type="text"
-    />
+    <input ref="searchInput" @keyup.enter="searchButton" v-model="searchText" class="search-input" @focus="searchFocus" @blur="searchBlur" placeholder="试试：百度搜索" type="text" />
   </div>
 </template>
 
@@ -72,7 +59,7 @@ export default {
   float: left;
   border-radius: 20px;
   // background: rgba($color: #000000, $alpha: 0.8);
-  margin-top: 26px;
+  // margin-top: 26px;
   // color: #2ecc71;
   color: #10aeb5;
   overflow: hidden;

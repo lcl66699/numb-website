@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <!-- 头部导航条 -->
-    <!-- <Nav /> -->
+
     <div class="headImg-box">
-      <img src="../assets/images/banner1.png" alt="" />
-      <div class="content ">
+      <img src="@/assets/images/banner1.png" alt="" />
+      <!-- <img src="@/assets/images/bg3.jpg" alt="" /> -->
+      <div class="content wow bounceInLeft">
         <p>Hi，楼上雅间请！</p>
         <h3>
           记录点滴，分享美好，遇见更好的自己。
@@ -15,6 +15,7 @@
         </p>
       </div>
     </div>
+
     <HomeMydo />
     <!-- 首页日历 -->
     <HomeDate />
@@ -34,10 +35,7 @@
           <div class="container-box">
             <a href="##">
               <div class="picture">
-                <img
-                  src="../assets/images/homeImgs/food2.jpg"
-                  class="img-responsive"
-                />
+                <img src="../assets/images/homeImgs/food2.jpg" class="img-responsive" />
                 <h4>边烤边吃&啤酒+烧烤</h4>
                 <p>
                   走过路过不要错过
@@ -48,10 +46,7 @@
           <div class="container-box">
             <a href="##">
               <div class="picture">
-                <img
-                  src="../assets/images/homeImgs/huoguo.jpg"
-                  class="img-responsive"
-                />
+                <img src="../assets/images/homeImgs/huoguo.jpg" class="img-responsive" />
                 <h4>没有什么是一顿火锅解决不了的</h4>
                 <p>
                   实在不行就两顿~
@@ -62,10 +57,7 @@
           <div class="container-box">
             <a href="##">
               <div class="picture">
-                <img
-                  src="../assets/images/homeImgs/food1.jpg"
-                  class="img-responsive"
-                />
+                <img src="../assets/images/homeImgs/food1.jpg" class="img-responsive" />
                 <h4>简简单单的烤桃酥</h4>
                 <p>
                   普普通通的烘培日常
@@ -92,10 +84,7 @@
           <!-- 第一行图 -->
           <div class="page-content-row">
             <div id="photosHover" class="content-row-left">
-              <img
-                src="../assets/images/homeImgs/xiyang1.jpg"
-                class="img-responsive"
-              />
+              <img src="../assets/images/homeImgs/xiyang1.jpg" class="img-responsive" />
 
               <p class="absolute-title">
                 谁能想到 如今年轻人下班之后 最大的抚慰 是能拍到当天的夕阳呢
@@ -106,10 +95,7 @@
               <div class="hidden"></div>
             </div>
             <div id="photosHover-left" class="content-row-right">
-              <img
-                src="../assets/images/homeImgs/xiyang3.jpg"
-                class="img-responsive"
-              />
+              <img src="../assets/images/homeImgs/xiyang3.jpg" class="img-responsive" />
               <p class="absolute-title">启峰山下看日落</p>
               <div class="hidden"></div>
             </div>
@@ -117,34 +103,22 @@
           <!-- 第二行图 -->
           <div class="page-content-rowBottom">
             <div id="photosHover" class="bottom-photos">
-              <img
-                src="../assets/images/homeImgs/bookimg.jpg"
-                class="img-responsive"
-              />
+              <img src="../assets/images/homeImgs/bookimg.jpg" class="img-responsive" />
               <p class="absolute-title">2018年的某一天，在教六实验室的记录</p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover-left" class="bottom-photos">
-              <img
-                src="../assets/images/homeImgs/school.jpg"
-                class="img-responsive"
-              />
+              <img src="../assets/images/homeImgs/school.jpg" class="img-responsive" />
               <p class="absolute-title">就算大雨让这座城市颠倒</p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover" class="bottom-photos">
-              <img
-                src="../assets/images/homeImgs/yangxue.jpg"
-                class="img-responsive"
-              />
+              <img src="../assets/images/homeImgs/yangxue.jpg" class="img-responsive" />
               <p class="absolute-title">夕阳无限好</p>
               <div class="hidden"></div>
             </div>
             <div id="photosHover-left" class="bottom-photos">
-              <img
-                src="../assets/images/homeImgs/xiyang5.jpg"
-                class="img-responsive"
-              />
+              <img src="../assets/images/homeImgs/xiyang5.jpg" class="img-responsive" />
               <p class="absolute-title">科二练车时的黄昏</p>
               <div class="hidden"></div>
             </div>
@@ -166,10 +140,7 @@
 
         <div class="think-display">
           <div class="think-son">
-            <img
-              src="../assets/images/homeImgs/tongyang.jpg"
-              class="img-responsive"
-            />
+            <img src="../assets/images/homeImgs/tongyang.jpg" class="img-responsive" />
             <div class="think-content">
               <h4>保护姑娘，贯彻落实</h4>
               <p>
@@ -179,10 +150,7 @@
             </div>
           </div>
           <div class="think-son">
-            <img
-              src="../assets/images/homeImgs/tx1.png"
-              class="img-responsive"
-            />
+            <img src="../assets/images/homeImgs/tx1.png" class="img-responsive" />
             <div class="think-content">
               <h4>我们都有美好的未来</h4>
               <p>
@@ -192,10 +160,7 @@
             </div>
           </div>
           <div class="think-son">
-            <img
-              src="../assets/images/homeImgs/tx3.png"
-              class="img-responsive"
-            />
+            <img src="../assets/images/homeImgs/tx3.png" class="img-responsive" />
             <div class="think-content">
               <h4>保持理智</h4>
               <p>
@@ -206,10 +171,7 @@
             </div>
           </div>
           <div class="think-son">
-            <img
-              src="../assets/images/homeImgs/tx2.png"
-              class="img-responsive"
-            />
+            <img src="../assets/images/homeImgs/tx2.png" class="img-responsive" />
             <div class="think-content">
               <h4>故事你真的在听吗</h4>
               <p>
@@ -225,14 +187,14 @@
     <!-- 关于 -->
     <div class="section">
       <ul class="inner">
-        <li @click="toaboutme">关于</li>
-        <li @click="tomusic">+网抑云音乐</li>
+        <li class="wow fadeInLeft" @click="toaboutme">关于</li>
+        <li class="wow fadeInRight" @click="tomusic">+网抑云音乐</li>
       </ul>
     </div>
     <!-- 个人记录 -->
     <div class="section-own">
       <div class="inner">
-        <h1>LCL的个人博客</h1>
+        <h1>LCL的个人空间</h1>
         <!-- <p>美好的东西每天都在消失，但明天永远不会停止来临</p> -->
         <p>
           “不管做什么，都要做到极致，工作就工作、笑就大笑、吃饭的时候像是最后一餐那样去享受”
@@ -242,6 +204,7 @@
     <!-- 页脚 -->
     <Foot ref="foot" />
     <!-- <HomeSwiper /> -->
+
   </div>
 </template>
 
@@ -250,23 +213,51 @@
 import HomeSwiper from "./HomeSwiper.vue";
 import HomeDate from "./HomeDate.vue";
 import HomeMydo from "./HomeMydo.vue";
-// import a from "../assets/images/FightVirus/1.jpg";
-// import gf from "../assets/images/homeImgs/food1.jpg";
-// import eqwewq from "../assets/images/homeImgs/food2.jpg";
+import {
+  swiperAnimateCache,
+  swiperAnimate,
+} from "@/assets/swiper.animate1.0.3.min.js";
+import { WOW } from "wowjs";
 // 页脚
 import Foot from "../components/Foot.vue";
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      swiperOption: {
+        loop: true,
+        direction: "vertical", //控制垂直滚动的方向
+        on: {
+          init: function () {
+            swiperAnimateCache(this);
+            swiperAnimate(this);
+          },
+          slideChangeTransitionStart: function () {},
+          slideChangeTransitionEnd: function () {},
+          slideChange: function () {
+            swiperAnimate(this);
+          },
+        },
+      },
+    };
   },
   mounted() {
-    // let str = "$10796";
-    // let num = 10796;
-    // // console.log(num / 100, "num");
-    // var str2 = str.slice(2);
-    // console.log(str, str2);
-    // console.log(str.toFixed(2));
+    //第一种写法，可以设置wow中属性
+    this.$nextTick(() => {
+      // 在dom渲染完后,再执行动画
+      var wow = new WOW({
+        boxClass: "wow", ///动画元件css类（默认为wow）
+        animateClass: "animated", //动画css类（默认为animated）
+        offset: 0, //到元素距离触发动画（当默认为0）
+        mobile: true, //在移动设备上触发动画（默认为true）
+        live: true, //对异步加载的内容进行操作（默认为true）
+      });
+      wow.init();
+    });
+    //第二种写法，默认属性
+    // this.$nextTick(() => { // 在dom渲染完后,再执行动画
+    // new WOW().init();
+    //})
   },
   components: {
     // Nav,
@@ -291,11 +282,12 @@ export default {
 .home {
   .headImg-box {
     width: 100%;
-    height: 600px;
+    height: 65vh;
     position: relative;
+    // background: left / cover fixed no-repeat url("../assets/images/bg3.jpg");
     img {
       width: 100%;
-      height: 600px;
+      height: 100%;
     }
     .content {
       position: absolute;
@@ -561,6 +553,7 @@ export default {
       transform: translate(-50%, -50%);
       color: #fff;
       li {
+        cursor: pointer;
         color: #fff;
         display: inline-block;
         width: 200px;
@@ -618,5 +611,36 @@ export default {
       }
     }
   }
+}
+</style>
+
+
+<style >
+#detailContrainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 100%;
+  background: white;
+}
+
+#detailContrainer.slide-enter-active {
+  animation: 0.9s bounceInDown;
+}
+
+@keyframes bounceInDown {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#content.contentDetail {
+  display: block;
+  margin-bottom: 0;
 }
 </style>

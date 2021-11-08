@@ -4,7 +4,6 @@
       <div class="container">
         <!-- 头部logo -->
         <div @click="goHome" class="logo">
-          <!-- <img :src="NavLogo" alt="" /> -->
           <span class="logo-svg">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-watermelon"></use>
@@ -19,33 +18,46 @@
         <NavTitle />
         <!-- 头部input -->
         <NavInput />
-        <div class="head-login">
-          <span
-            class="login"
-            v-html="loginText"
-            v-if="nologin"
-            @click="userLogin"
-          ></span>
+        <el-button v-if="!isLogin" @click="login" class="new_login">登录</el-button>
+        <el-dropdown class="user_log" v-else @command='goUserInfo'>
+          <div class="login_img">
+            <img v-if="userObj.userlogo" :src="userObj.userlogo" alt="">
+            <img v-else src="@/assets/de_img.png" alt="">
+          </div>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command='my'>我的主页</el-dropdown-item>
+            <el-dropdown-item command='logout'>退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+
+        <!-- <div class="head-login">
+          <span class="login" v-html="loginText" v-if="nologin" @click="userLogin"></span>
           <div v-else>
             <span> 登陆地：{{ userCity }} </span>
           </div>
-        </div>
+        </div> -->
+
       </div>
     </div>
     <p class="navHeight"></p>
+    <compDiago ref="compDiago" @closePop='closePop'>
+      <LoginBox @loginSus="loginSus" />
+    </compDiago>
   </div>
 </template>
 
 <script>
-import NavLogo from "@/assets/images/Nav/logo_03.png";
 import NavTitle from "./NavTitle";
 import NavInput from "./NavInput";
 //引入登录api
-import { postIplogin } from "../../api/index";
+import { postIplogin, getUserInfo } from "@/api/index";
+import compDiago from "../compDiago.vue";
+import LoginBox from "../LoginBox.vue";
 export default {
   data() {
     return {
-      NavLogo: NavLogo, //img
+      isLogin: false,
+      userObj: {}, //用户信息接口
       userInfo: [], //请求的ip信息
       nologin: true,
       loginText: "登录",
@@ -55,8 +67,60 @@ export default {
   components: {
     NavTitle,
     NavInput,
+    compDiago,
+    LoginBox,
+  },
+  mounted() {
+    if (sessionStorage.getItem("token")) {
+      this.loginSus();
+    }
+    // console.log(window.localStorage);
+    // 加载用户名,有本地存储则用本地的
+    // if (window.localStorage.userCity) {
+    //   this.nologin = false;
+    //   this.userCity = window.localStorage.userCity;
+    // } else {
+    //   this.nologin = true;
+    // }
   },
   methods: {
+    //登录传来的emit,表示登录成功,请求个人信息接口
+    async loginSus(val) {
+      let data = await getUserInfo();
+      console.log("请求个人信息接口", data);
+      try {
+        this.userObj = data;
+        this.isLogin = true;
+      } catch (error) {
+        this.isLogin = false;
+        this.$message.error("获取用户信息失败!");
+      }
+    },
+    goUserInfo(val) {
+      if (val == "my") {
+        this.$router.push("/user");
+      } else if (val == "logout") {
+        this.logout();
+      }
+    },
+    logout() {
+      this.$confirm("退出登录, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        sessionStorage.removeItem("token");
+        this.$message({
+          type: "success",
+          message: "登出成功!",
+        });
+        this.isLogin = false;
+      });
+    },
+    login() {
+      this.$refs.compDiago.open();
+    },
+    closePop() {},
     goHome() {
       this.$router.push({
         name: "Home",
@@ -107,19 +171,8 @@ export default {
           // 写进本地存储
           let storage = window.localStorage;
           storage.userCity = this.userInfo.country + this.userInfo.city;
-          console.log(storage);
         });
     },
-  },
-  mounted() {
-    // console.log(window.localStorage);
-    // 加载用户名,有本地存储则用本地的
-    if (window.localStorage.userCity) {
-      this.nologin = false;
-      this.userCity = window.localStorage.userCity;
-    } else {
-      this.nologin = true;
-    }
   },
 };
 </script>
@@ -147,7 +200,9 @@ $activateColor: #10aeb5;
   .container {
     margin: 0 auto;
     width: 1280px;
-    // overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .logo {
       cursor: pointer;
       float: left;
@@ -205,5 +260,38 @@ $activateColor: #10aeb5;
 .navHeight {
   width: 100%;
   height: 90px;
+}
+.login_img {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid #e9e9e9;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>
+<style lang="scss" >
+.container {
+  .new_login {
+    margin-left: 15px;
+    color: #fff;
+    border-color: #06f;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    background: #10aeb5;
+    border: 1px solid;
+    border-radius: 3px;
+  }
+  .user_log {
+    margin-left: 15px;
+  }
 }
 </style>
