@@ -12,6 +12,7 @@ import request from '@/utils/request'
 let baseUrl = '/api'
 if (process.env.NODE_ENV === 'development') {
     baseUrl = 'http://localhost:3000/api'
+    // baseUrl = 'http://39.106.5.96:3000/api'
 }
 /**
  * 新接口开始
@@ -50,6 +51,17 @@ export function setUserInfo(query) {
         data: query
     });
 }
+
+//上传用户头像
+export function userUploadLogo(query) {
+    return request({
+        url: baseUrl + "/user/uploadLogo",
+        method: "post",
+        data: query,
+        headers: { "Content-Type": "multipart/form-data" }
+    });
+}
+
 // 
 export function testNginx(query) {
     return request({
@@ -77,7 +89,7 @@ export function download(query) {
 }
 
 //上传文件
-export function userUploadLogo(query) {
+export function userUpload(query) {
     return request({
         url: baseUrl + "/user/uploadLogo",
         method: "post",

@@ -9,9 +9,6 @@ const port = process.env.port || 8080// dev port
 module.exports = {
     // 部署应用的基本url  可用 process.env.NODE_ENV 环境变量控制
     publicPath: '',
-
-
-    // publicPath: './',//打包路径
     // productionSourceMap: false,//正式优化
     // 指定生产环境目录
     outputDir: 'dist',

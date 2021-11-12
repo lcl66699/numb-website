@@ -11,10 +11,10 @@
             <i class="el-icon-camera-solid"></i>
             <p>修改我的头像</p>
           </div>
-          <img v-if="imageUrl" :src="imageUrl" class="uploadImg">
-          <span v-else>
+          <img :src="initQuery.userlogo" class="uploadImg">
+          <!-- <span v-else>
             <i class="el-icon-camera-solid avatar-uploader-icon"></i>
-          </span>
+          </span> -->
         </el-upload>
 
         <el-row class="info_txt">
@@ -77,7 +77,7 @@
 <script>
 import Center from "./Center.vue";
 import Right from "./Right.vue";
-import { getUserInfo, setUserInfo } from "@/api";
+import { getUserInfo, setUserInfo, userUploadLogo } from "@/api";
 export default {
   components: { Center, Right },
   data() {
@@ -109,35 +109,51 @@ export default {
     async httpRequestwear(params) {
       let fd = new FormData();
       fd.append("file", params.file);
-      console.log("正在", params);
-      return 888;
-      // let { data } = await importCheck(fd);
-      // console.log(data);
+      let data = await userUploadLogo(fd);
+      if (data.code == 200) {
+        this.$message.success("上传成功！");
+      } else {
+        this.$message.error("上传失败！");
+      }
+      this.init();
     },
     handleAvatarSuccess(res, file) {
-      console.log(res, file);
       this.imageUrl = URL.createObjectURL(file.raw);
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === "image/jpeg";
+      const isPNG = file.type === "image/png";
       const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+      if (isJPG || isPNG) {
+        if (!isLt2M) {
+          this.$message.error("上传头像图片大小不能超过 1MB!");
+        }
+        if (isJPG) {
+          return isJPG && isLt2M;
+        } else {
+          return isPNG && isLt2M;
+        }
+      } else {
+        this.$message.error("上传头像图片只能是 JPG 或 PNG 格式!");
       }
-      if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
-      }
-      return isJPG && isLt2M;
     },
     edit() {
       this.noEdit = false;
       this.afterObj = JSON.parse(JSON.stringify(this.initQuery));
     },
+    // 更改用户信息1
     async save() {
-      let data = await setUserInfo(this.initQuery);
-      console.log(data, this.initQuery);
-      // this.noEdit = true;
+      let { code, msg } = await setUserInfo(this.initQuery);
+      if (code == 200) {
+        this.$message({
+          message: "修改成功",
+          type: "success",
+        });
+      } else {
+        this.$message.error("修改失败," + msg);
+      }
+      this.noEdit = true;
+      this.init();
     },
     cancel() {
       this.noEdit = true;

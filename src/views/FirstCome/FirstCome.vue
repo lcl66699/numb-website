@@ -151,9 +151,8 @@ export default {
 #home {
   height: 100vh;
   min-height: 500px;
-  background: url("../../assets/images/bg.jpg") no-repeat center;
-  // background: url("../../assets/images/bg1.jpg") no-repeat center;
-  // background: url("../../assets/images/bg3.jpg") no-repeat center;
+  // background: url("../../assets/images/bg.jpg") no-repeat center;
+  background: url("../../assets/images/bg1.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -177,7 +176,7 @@ export default {
 }
 
 #home .content h1::after {
-  content: "Darkcode";
+  content: "Web Engineer";
   animation: textanim 10s linear infinite;
 }
 

@@ -114,6 +114,7 @@ export default {
           type: "success",
           message: "登出成功!",
         });
+        this.$router.push("/");
         this.isLogin = false;
       });
     },
