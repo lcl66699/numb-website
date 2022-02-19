@@ -13,11 +13,19 @@
     </li>
     <li class="nav-title">
       <router-link to="/photos">随手拍</router-link>
+
     </li>
     <li class="nav-title">
       <router-link to="/chat">聊聊</router-link>
     </li>
-    <li class="nav-title"><router-link to="/lemon">柠檬精</router-link></li>
+    <li class="nav-title ">
+      <!-- <router-link to="/lemon">柠檬精</router-link> -->
+      <a class="blog_box" target="__blank" href="https://numbrun.gitee.io/">
+        我的博客
+        <span class="my_blog"></span>
+      </a>
+
+    </li>
     <li class="nav-title">
       <router-link to="/virus">抗击疫情</router-link>
     </li>
@@ -30,9 +38,9 @@
           <span>
             <router-link to="/others/aboutme">站长资料 </router-link>
           </span>
-          <span
-            ><router-link to="/others/commonent">访客留言</router-link></span
-          >
+          <span>
+            <router-link to="/others/commonent">访客留言</router-link>
+          </span>
         </div>
       </div>
       <!-- <router-link to="/others/aboutme"> -->
@@ -72,10 +80,12 @@ export default {
   // display: flex;
   .nav-title {
     float: left;
+
     a {
       padding: 4px 10px;
       margin: 0 10px;
       color: #fff;
+      // display: inline-block;
       border-radius: 3px;
     }
     a:hover {
@@ -110,6 +120,24 @@ export default {
       border-top: 4px solid;
       border-right: 4px solid transparent;
       border-left: 4px solid transparent;
+    }
+
+    .blog_box {
+      position: relative;
+      .my_blog {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        line-height: 20px;
+        background: #d9534f;
+        padding: 3px;
+        z-index: 9999999;
+        border-radius: 20%;
+        border-radius: 50%;
+        font-size: 0;
+        line-height: 0;
+        border: 1px solid #d43f3a;
+      }
     }
   }
   .dropdown {

@@ -82,6 +82,8 @@ export default {
         sessionStorage.setItem("token", `Bearer ${data.token}`);
         this.$parent.$parent.close();
         this.$emit("loginSus");
+        this.$router.push("/user");
+        sessionStorage.setItem("isCome", 1); //判断是不是首次进入
       } else {
         this.$message.error(data.msg);
         this.loginQuery.password = "";

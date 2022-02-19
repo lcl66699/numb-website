@@ -10,12 +10,13 @@
           <span></span>
         </button>
         <div class="navbar-menu" :class="isActive?'active':''">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
+          <!-- <a href="#">Home</a> -->
+          <a href="https://blog.csdn.net/qq_38594056?type=blog" target="__blank">我的CSDN</a>
+          <a href="https://numbrun.gitee.io/" target="__blank">我的博客</a>
+          <!-- <a href="#">Services</a>
           <a href="#">Education</a>
           <a href="#">Works</a>
-          <a href="#">Contact</a>
+          <a href="#">Contact</a> -->
         </div>
       </div>
     </nav>
@@ -33,29 +34,53 @@
             <a href="#" class="fab fa-youtube"></a>
           </div>
           <div class="buttons">
-            <a href="" @click.prevent="">登 录</a>
+            <a href="" @click.prevent="login">登 录</a>
             <a href="" @click.prevent="goHome">访客进入</a>
           </div>
         </div>
       </div>
     </section>
+
+    <compDiago ref="compDiago">
+      <LoginBox @loginSus="loginSus" />
+    </compDiago>
   </div>
 </template>
-
 <script>
+import LoginBox from "@/components/LoginBox.vue";
+import compDiago from "@/components/compDiago.vue";
 export default {
   data() {
     return {
       isActive: false,
     };
   },
+  components: {
+    LoginBox,
+    compDiago,
+  },
   methods: {
+    //登录传来的emit,表示登录成功,请求个人信息接口
+    async loginSus(val) {
+      let data = await getUserInfo();
+      console.log("请求个人信息接口", data);
+      try {
+        this.userObj = data;
+        this.isLogin = true;
+      } catch (error) {
+        this.isLogin = false;
+        this.$message.error("获取用户信息失败!");
+      }
+    },
     showRight() {
       this.isActive = !this.isActive;
     },
     goHome() {
       this.$router.push("/");
       sessionStorage.setItem("isCome", 1); //判断是不是首次进入
+    },
+    login() {
+      this.$refs.compDiago.open();
     },
   },
 };
