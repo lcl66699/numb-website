@@ -11,8 +11,8 @@
         </button>
         <div class="navbar-menu" :class="isActive?'active':''">
           <!-- <a href="#">Home</a> -->
-          <a href="https://blog.csdn.net/qq_38594056?type=blog" target="__blank">我的CSDN</a>
-          <a href="https://numbrun.gitee.io/" target="__blank">我的博客</a>
+          <a href="https://blog.csdn.net/qq_38594056?type=blog" target="_blank">我的CSDN</a>
+          <a href="https://numbrun.gitee.io" target="_blank">我的博客</a>
           <!-- <a href="#">Services</a>
           <a href="#">Education</a>
           <a href="#">Works</a>

@@ -20,7 +20,7 @@
     </li>
     <li class="nav-title ">
       <!-- <router-link to="/lemon">柠檬精</router-link> -->
-      <a class="blog_box" target="__blank" href="https://numbrun.gitee.io/">
+      <a class="blog_box" target="_blank" href="https://numbrun.gitee.io/">
         我的博客
         <span class="my_blog"></span>
       </a>

@@ -2,6 +2,11 @@
   <div>
     <!-- 左侧个性推荐 -->
     <div class="wrapper">
+      <h6 class="tips_title">
+        此音乐模块很多接口已不在维护，部分页面会出现请求报错、无数据等问题。
+        <br>
+        尊重版权，仅用作学习。
+      </h6>
       <div class="display">
         <el-header style="border-bottom: 1px solid rgb(230,230,230)" height="100%;">
           <el-menu style="width: 250px;float:left">
@@ -116,5 +121,14 @@ export default {
       border-left: 4px solid;
     }
   }
+}
+.tips_title {
+  margin: 10px 0;
+  background: #d9534f;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 7px;
+  line-height: 50px;
 }
 </style>

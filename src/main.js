@@ -27,7 +27,7 @@ Vue.use(animated)
 import axios from 'axios'
 //配置请求根路径 跨域在vue.config.js中
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/music-api';
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
