@@ -47,6 +47,16 @@ module.exports = {
         },
         disableHostCheck: true
     },
+    configureWebpack: {
+        name: 'title',
+        resolve: {
+            alias: {
+                '@': resolve('src'),
+                // '~': resolve('src/styles')
+            }
+        }
+    },
+
     // chainWebpack: config => {
     //     // 修复HMR
     //     config.resolve.symlinks(true);
