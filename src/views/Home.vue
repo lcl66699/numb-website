@@ -299,6 +299,7 @@ export default {
       top: 100px;
       left: 165px;
       line-height: 30px;
+      border-radius: 10px;
     }
   }
   .wrapper {
