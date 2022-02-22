@@ -23,9 +23,7 @@ export default {
         //   第一种ref 控制css样式来显示隐藏
         // this.$refs.topBox.style = "display:block";
         // 第二种直接v-show 显示/隐藏
-        // console.log("11", this.istop);
         this.istop = true;
-        // console.log("22", this.istop);
         topTimer = setInterval(this.topTrue, 300);
       } else {
         // this.$refs.topBox.style.display = "none";
@@ -42,7 +40,7 @@ export default {
       // 考虑连续点击的情况，点击之后先清一次
       clearInterval(this.goTopTimer);
       this.goTopTimer = setInterval(() => {
-        const SPEED = 100;
+        const SPEED = 1000;
         var topNumber = document.documentElement.scrollTop - SPEED;
         document.documentElement.scrollTop = topNumber;
         // 已经到顶部

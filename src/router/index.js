@@ -130,7 +130,18 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'hash',
-  routes
+  routes,
+  // 解决路由跳转后，不显示在首行
+  // scrollBehavior() {
+  //   return { x: 0, y: 0 };
+  // }
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 export default router

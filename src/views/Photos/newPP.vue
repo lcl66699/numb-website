@@ -1,34 +1,26 @@
 <template>
-  <div class="my_wrapper">
-    <!-- <newPP /> -->
-    <!-- <last /> -->
-
-    <el-row :gutter="20" class="demo-image__lazy my_lazy">
+  <div class="box_new_photo" ref="box" id="box">
+    <div class="item" ref="item">
+      <img src="./images/0.jpg" alt="" />
+    </div>
+    <div v-for="url in urls" :key="url" class="item">
+      <!-- <img src="./images/1.jpg" alt="" /> -->
+      <el-image lazy :src="url"></el-image>
+    </div>
+    <!-- <el-row :gutter="20" class="demo-image__lazy my_lazy">
       <div class="item" v-for="url in urls" :key="url">
         <el-image lazy :src="url"></el-image>
       </div>
-    </el-row>
-    <p v-if="loading">加载中...</p>
-    <!-- <head123 /> -->
+    </el-row> -->
   </div>
 </template>
-<script>
-import head123 from "./head.vue";
-import newPP from "./newPP.vue";
-import last from "./last.vue";
 
+<script>
+import { waterFall } from "./waterfall";
 export default {
-  name: "photo",
-  components: {
-    head123,
-    newPP,
-    last,
-  },
   data() {
     return {
-      loading: false,
       flag: true,
-      imgList: [],
       urls: [
         "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
         "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
@@ -38,25 +30,22 @@ export default {
         "https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg",
         "https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg",
       ],
-      list: [],
-      k: 0,
     };
   },
   mounted() {
-    // for (let i = 0; i < 10; i++) {
-    //   let { num, num1, num2 } = this.myRandom();
-    //   this.imgList.push({
-    //     img: `https://picsum.photos/${num}/${num1}?random=${num2}`,
-    //     width: "400",
-    //     height: "539",
-    //   });
-    // }
+    this.pushImg();
+    this.pushImg();
+    waterFall(this, this.$refs.box, { margin: 4, vgap: 4, hgap: 3 });
+
+    // 页面尺寸改变时实时触发
+    window.onresize = () => {
+      //重新定义瀑布流
+      waterFall(this, this.$refs.box, { margin: 4, vgap: 4, hgap: 3 });
+    };
+
     //节流函数
     const throttleHander = this.throttle(this.lazyLoading, 300);
     window.addEventListener("scroll", throttleHander); // 滚动到底部，再加载的处理事件
-    // this.$axios.get("/static/data.json").then((res)=>{
-    //     this.list=res.data.list;
-    // })
   },
   methods: {
     async pushImg() {
@@ -87,8 +76,8 @@ export default {
         // 滚动到底部，逻辑代码
         //事件处理
         console.log("我已经滚动到底部了触发这个事件了"); //此处可以添加数据请求
-        await this.pushImg();
-        this.flag = false;
+        // await this.pushImg();
+        // this.flag = false;
         //  ();
         // this.$axios.get("/static/data.json").then((res) => {
         //   //console.log(res.data.lists.length)
@@ -114,35 +103,25 @@ export default {
   },
 };
 </script>
-<style lang='scss' scope >
-.my_wrapper {
-  margin: 0 auto;
-  width: 1200px;
-  // .demo-image__lazy {
-  //   height: 500px;
-  //   overflow: auto;
-  // }
-}
-.my_lazy {
-  /*分几列*/
-  column-count: 3;
-  // display: flex;
-  // flex-flow: column wrap;
-  // height: 100vh;
-}
-.item {
-  margin: 10px;
-  // width: calc(100% / 3 - 20px);
-}
-.item img {
+
+<style lang="scss" scoped>
+img {
   width: 100%;
   height: 100%;
 }
-// .demo-image__lazy .el-image {
-//   display: block;
-//   height: 100%;
-
-//   /*不留白，不知道什么意思可以取消这个样式试试*/
-//   break-inside: avoid;
-// }
+.box_new_photo {
+  margin: 40px;
+  width: 100%;
+  position: relative;
+  box-sizing: content-box;
+  .item {
+    position: absolute;
+    border: 1px solid #5592e5;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05, 1.05);
+    }
+  }
+}
 </style>

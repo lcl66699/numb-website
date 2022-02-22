@@ -27,6 +27,13 @@ Vue.use(animated)
 import axios from 'axios'
 //配置请求根路径 跨域在vue.config.js中
 
+
+
+import { debounce, throttle } from '@/utils/index' //引入全局的方法
+Vue.prototype.throttle = throttle;//挂载原型
+Vue.prototype.debounce = debounce;//挂载原型
+
+
 axios.defaults.baseURL = '/music-api';
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
