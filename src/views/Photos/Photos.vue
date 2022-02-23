@@ -4,9 +4,9 @@
     <!-- <last /> -->
 
     <el-row :gutter="20" class="demo-image__lazy my_lazy">
-      <div class="item" v-for="url in urls" :key="url">
+      <el-col class="item" v-for="url in urls" :key="url">
         <el-image lazy :src="url"></el-image>
-      </div>
+      </el-col>
     </el-row>
     <p v-if="loading">加载中...</p>
     <!-- <head123 /> -->
@@ -131,18 +131,19 @@ export default {
   // height: 100vh;
 }
 .item {
-  margin: 10px;
+  margin-top: 10px;
   // width: calc(100% / 3 - 20px);
 }
 .item img {
+  border-radius: 10px;
   width: 100%;
   height: 100%;
 }
-// .demo-image__lazy .el-image {
-//   display: block;
-//   height: 100%;
+.demo-image__lazy .el-image {
+  display: block;
+  height: 100%;
 
-//   /*不留白，不知道什么意思可以取消这个样式试试*/
-//   break-inside: avoid;
-// }
+  /*不留白，不知道什么意思可以取消这个样式试试*/
+  break-inside: avoid;
+}
 </style>

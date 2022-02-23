@@ -5,18 +5,10 @@
     </div>
     <div class="list-and-search" :class="isShow ? 'on' : ''">
       <div class="search-module clearfix" v-show="isNeedSearch">
-        <input
-          class="search-text"
-          @keyup="search($event)"
-          :placeholder="placeholder"
-        />
+        <input class="search-text" @keyup="search($event)" :placeholder="placeholder" />
       </div>
       <ul class="list-module">
-        <li
-          v-for="(item, index) in datalist"
-          @click="selectToggle(item)"
-          :key="index"
-        >
+        <li v-for="(item, index) in datalist" @click="selectToggle(item)" :key="index">
           <span class="list-item-text">{{ item.name }}</span>
         </li>
       </ul>
