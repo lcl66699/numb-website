@@ -1,10 +1,10 @@
 <template>
   <div class="center_box">
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="推荐文章" name="first">
+      <el-tab-pane label="抖音热榜" name="first">
         <Article />
       </el-tab-pane>
-      <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+      <el-tab-pane label="配置管理" name="second">正在开发~</el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -28,6 +28,7 @@ export default {
 .center_box {
   background: #fff;
   padding: 12px;
+  margin-bottom: 50px;
   border-radius: 5px;
 }
 </style>

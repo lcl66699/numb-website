@@ -1,7 +1,6 @@
 @echo off
 echo "-------Begin-------"
 set /p msg=请输入提交注释:
-call npm run build
 git status
 git add .
 git commit -m %msg%

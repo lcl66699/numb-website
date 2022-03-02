@@ -1,26 +1,26 @@
 <template>
   <div class="my_wrapper">
-    <!-- <newPP /> -->
+    <newPP />
     <!-- <last /> -->
-
-    <el-row :gutter="20" class="demo-image__lazy my_lazy">
+    <!-- <el-row :gutter="20" class="demo-image__lazy my_lazy">
       <el-col class="item" v-for="url in urls" :key="url">
         <el-image lazy :src="url"></el-image>
       </el-col>
     </el-row>
-    <p v-if="loading">加载中...</p>
-    <!-- <head123 /> -->
+    <p v-if="loading">加载中...</p> -->
+
+    <!-- <photoheader /> -->
   </div>
 </template>
 <script>
-import head123 from "./head.vue";
+import photoheader from "./head.vue";
 import newPP from "./newPP.vue";
 import last from "./last.vue";
 
 export default {
   name: "photo",
   components: {
-    head123,
+    photoheader,
     newPP,
     last,
   },
@@ -43,20 +43,9 @@ export default {
     };
   },
   mounted() {
-    // for (let i = 0; i < 10; i++) {
-    //   let { num, num1, num2 } = this.myRandom();
-    //   this.imgList.push({
-    //     img: `https://picsum.photos/${num}/${num1}?random=${num2}`,
-    //     width: "400",
-    //     height: "539",
-    //   });
-    // }
     //节流函数
-    const throttleHander = this.throttle(this.lazyLoading, 300);
-    window.addEventListener("scroll", throttleHander); // 滚动到底部，再加载的处理事件
-    // this.$axios.get("/static/data.json").then((res)=>{
-    //     this.list=res.data.list;
-    // })
+    // const throttleHander = this.throttle(this.lazyLoading, 300);
+    // window.addEventListener("scroll", throttleHander); // 滚动到底部，再加载的处理事件
   },
   methods: {
     async pushImg() {

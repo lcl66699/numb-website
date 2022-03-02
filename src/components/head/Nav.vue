@@ -10,7 +10,7 @@
             </svg>
           </span>
           <div class="logo-text clearFix">
-            <strong>西瓜汁</strong>
+            <strong>西瓜村</strong>
             <h3>这世上再难遇到我</h3>
           </div>
         </div>
@@ -205,14 +205,22 @@ $activateColor: #10aeb5;
     justify-content: center;
     align-items: center;
     .logo {
+      width: 170px;
       cursor: pointer;
       float: left;
       height: 90px;
+      display: flex;
       .logo-svg {
-        float: left;
+        // float: left;
         text-align: center;
         margin-top: 12px;
+        width: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         svg {
+          width: 44px;
+          // height: 46px;
           line-height: 90px;
           font-size: 44px;
         }

@@ -17,7 +17,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "登录西瓜汁，与优秀答主深度交流",
+      default: "登录西瓜村，与优秀村民深度交流",
     },
   },
   data() {

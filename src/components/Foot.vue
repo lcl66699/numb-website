@@ -36,11 +36,11 @@
               </router-link>
             </li>
             <li class="active">
-              <router-link to="/foods">
+              <router-link to="/msgList">
                 <svg class="icon" aria-hidden="true">
                   <use xlink:href="#icon--"></use>
                 </svg>
-                家常便饭
+                访客留言
               </router-link>
             </li>
             <li class="active">
@@ -50,6 +50,14 @@
                 </svg>
                 聊聊
               </router-link>
+            </li>
+            <li class="active">
+              <a @click="goBlog" href="javascript:;">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-liuyan"></use>
+                </svg>
+                我的博客
+              </a>
             </li>
           </ul>
         </div>
@@ -72,8 +80,10 @@
     </div>
     <div id="footer-bottom">
       <p>
-        Copyrigh; 2020-2021 numb的个人空间 All Rights Reserved V-1.0.0
-        黑ICP备20003708号
+        Copyright © 2020-2022 numb的个人空间 All Rights Reserved V-1.6.0
+        <span class="beian" @click="gobeian">
+          黑ICP备20003708号
+        </span>
       </p>
     </div>
   </footer>
@@ -89,8 +99,14 @@ export default {
   },
   components: {},
   methods: {
+    gobeian() {
+      window.open("https://beian.miit.gov.cn", "_blank");
+    },
     aboutme() {
       this.$router.push("/others/aboutme");
+    },
+    goBlog() {
+      window.open("https://blog.numb.run", "_blank");
     },
   },
   mounted() {},
@@ -239,6 +255,9 @@ export default {
     p {
       color: #bbb;
       font-size: 14px;
+    }
+    .beian {
+      cursor: pointer;
     }
   }
 }

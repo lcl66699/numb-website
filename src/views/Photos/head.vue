@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { photosList } from "@/api/";
 export default {
   name: "HelloWorld",
   data() {
@@ -48,16 +49,20 @@ export default {
     };
   },
   mounted() {
-    for (let i = 0; i < 100; i++) {
-      let { num, num1, num2 } = this.myRandom();
-      this.allData.push(`https://picsum.photos/${num}/${num1}?random=${num2}`);
-      // this.allData.push({
-      //   img: `https://picsum.photos/${num}/${num1}?random=${num2}`,
-      //   width: "400",
-      //   height: "539",
-      // });
-    }
-    this.chaifenData.left.push(this.allData[0]);
+    photosList().then((res) => {
+      console.log(123, res);
+      let arr = [];
+      res.forEach((element) => {
+        arr.push(element.download_url);
+      });
+      this.allData = arr;
+      this.chaifenData.left.push(this.allData[0]);
+    });
+    // for (let i = 0; i < 100; i++) {
+    //   let { num, num1, num2 } = this.myRandom();
+    //   this.allData.push(`https://picsum.photos/${num}/${num1}?random=${num2}`);
+    // }
+    // this.chaifenData.left.push(this.allData[0]);
   },
   watch: {
     "chaifenData.left": {
@@ -96,15 +101,13 @@ export default {
       return {
         num: parseInt(Math.random() * (400 - 100 + 1) + 100),
         num1: parseInt(Math.random() * (400 - 100 + 1) + 100),
-        num2: parseInt(Math.random() * (50 - 1 + 1) + 1),
+        num2: parseInt(Math.random() * (5000 - 1 + 1) + 1),
       };
     },
     handleAry(that, $el, i) {
       let height = that.$refs[$el].offsetHeight; // 获取盒子高度
-      console.log(height);
       that.heightAry[i] = height;
       if (that.index < that.allData.length) {
-        console.log("触发", this.count++);
         // 判断index是否超出总数据的下标值
         // 没超出了数据下标值,继续添加数据到下一个盒子
         // 判断heighAry数组中三个数字的最小值,并获取最小值的下标值

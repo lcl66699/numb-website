@@ -29,9 +29,10 @@ import axios from 'axios'
 
 
 
-import { debounce, throttle } from '@/utils/index' //引入全局的方法
+import { debounce, throttle, formatTime } from '@/utils/index' //引入全局的方法
 Vue.prototype.throttle = throttle;//挂载原型
 Vue.prototype.debounce = debounce;//挂载原型
+Vue.prototype.formatTime = formatTime;//挂载原型
 
 
 axios.defaults.baseURL = '/music-api';

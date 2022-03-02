@@ -8,15 +8,15 @@
     <li class="nav-title">
       <router-link to="/music">音乐</router-link>
     </li>
-    <li class="nav-title">
-      <router-link to="/foods">家常便饭</router-link>
-    </li>
+
     <li class="nav-title">
       <router-link to="/photos">随手拍</router-link>
-
     </li>
     <li class="nav-title">
       <router-link to="/chat">聊聊</router-link>
+    </li>
+    <li class="nav-title">
+      <router-link to="/virus">抗击疫情</router-link>
     </li>
     <li class="nav-title ">
       <!-- <router-link to="/lemon">柠檬精</router-link> -->
@@ -24,10 +24,10 @@
         我的博客
         <span class="my_blog"></span>
       </a>
-
     </li>
+
     <li class="nav-title">
-      <router-link to="/virus">抗击疫情</router-link>
+      <router-link to="/msgList">访客留言</router-link>
     </li>
     <li class=" nav-title">
       <div class="dropdown" @click="goOther">
@@ -39,7 +39,11 @@
             <router-link to="/others/aboutme">站长资料 </router-link>
           </span>
           <span>
-            <router-link to="/others/commonent">访客留言</router-link>
+            <router-link :to="{name:'page404'}">404</router-link>
+          </span>
+          <span @click="goResume">
+            <a href="javascript:;">查看简历</a>
+            <!-- <a href="https://numb.run/www/public/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-%E5%88%98%E6%88%90%E9%BE%99-19963465520.pdf" target="_blank"></a> -->
           </span>
         </div>
       </div>
@@ -58,6 +62,32 @@ export default {
   methods: {
     goOther() {
       this.otherShow = !this.otherShow;
+    },
+    goResume() {
+      this.$prompt("请输入瓜村村长(站长)姓名", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          value = value ? value.trim() : "";
+          if (value == "刘成龙") {
+            window.open(
+              "https://numb.run/www/public/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-%E5%88%98%E6%88%90%E9%BE%99-19963465520.pdf",
+              "_blank"
+            );
+          } else {
+            this.$message({
+              type: "error",
+              message: "答案错误",
+            });
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "取消输入",
+          });
+        });
     },
   },
   mounted() {

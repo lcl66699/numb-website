@@ -1,32 +1,133 @@
-<template>
-  <div class="my_photos" style="position:relative;">
-    <el-row class="container">
-      <el-col :span='8' class="column" v-for="(column,index) in columns" :key="index">
-        <!-- <div class="item" v-for="(item,i) in column.columnArr" :key="i" :style="{ height: item.height + 'px', background: item.background }"> -->
-        <div class="item" v-for="(item,i) in column.columnArr" :key="i" :style="{   }">
-          <!-- {{ item.text }} -->
-          <!-- <img :src="item.url" alt=""> -->
-          <el-image lazy :src="item.url"></el-image>
-        </div>
-      </el-col>
-    </el-row>
 
-    <!-- <div class="container">
-      <div class="column" v-for="(column,index) in columns" :key="index">
-        <div class="item" v-for="(item,i) in column.columnArr" :key="i" :style="{ height: item.height + 'px', background: item.background }">
+<template>
+  <div style="position:relative;">
+    <!-- <el-row class="container">
+      <el-col :span='8' class="column" v-for="(column,index) in columns" :key="index">
+        <div class="item" v-for="(item,i) in column.columnArr" :key="i" :style="{  background: item.background }">
           {{ item.text }}
           <img :src="item.url" alt="">
         </div>
+      </el-col>
+    </el-row> -->
+
+    <div class="container">
+      <div class="column" v-for="(column,index) in columns" :key="index">
+        <div class="item" v-for="(item,i) in column.columnArr" :key="i" :style="{ height: item.height + 'px', background: item.background }">
+          {{ item.text }}
+          <img :src="item.background" alt="">
+        </div>
       </div>
-    </div> -->
+    </div>
     <div class="loading" v-if="loading" v-loading="loading" element-loading-text="加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)"></div>
   </div>
 </template>
 <script>
+import { photosList } from "@/api/";
 export default {
   data() {
     return {
-      contentArr: [],
+      contentArr: [
+        { value: 0, height: "150", background: "#409eff", text: "1", top: "" },
+        { value: 1, height: "250", background: "#67c23a", text: "2", top: "" },
+        { value: 2, height: "250", background: "#e6a23c", text: "3", top: "" },
+        { value: 3, height: "250", background: "#f56c6c", text: "4", top: "" },
+        { value: 4, height: "180", background: "#909399", text: "5", top: "" },
+        { value: 5, height: "250", background: "#409eff", text: "6", top: "" },
+        { value: 6, height: "180", background: "#67c23a", text: "7", top: "" },
+        { value: 7, height: "250", background: "#e6a23c", text: "8", top: "" },
+        { value: 8, height: "180", background: "#f56c6c", text: "9", top: "" },
+        { value: 9, height: "150", background: "#909399", text: "10", top: "" },
+        {
+          value: 10,
+          height: "150",
+          background: "#409eff",
+          text: "11",
+          top: "",
+          url: "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
+        },
+
+        {
+          value: 16,
+          height: "180",
+          background: "#67c23a",
+          text: "17",
+          top: "",
+        },
+
+        {
+          value: 18,
+          height: "180",
+          background: "#f56c6c",
+          text: "19",
+          top: "",
+        },
+
+        {
+          value: 20,
+          height: "150",
+          background: "#409eff",
+          text: "21",
+          top: "",
+        },
+        {
+          value: 21,
+          height: "250",
+          background: "#67c23a",
+          text: "22",
+          top: "",
+        },
+        {
+          value: 22,
+          height: "250",
+          background: "#e6a23c",
+          text: "23",
+          top: "",
+        },
+        {
+          value: 23,
+          height: "250",
+          background: "#f56c6c",
+          text: "24",
+          top: "",
+        },
+        {
+          value: 24,
+          height: "180",
+          background: "#909399",
+          text: "25",
+          top: "",
+        },
+
+        {
+          value: 26,
+          height: "180",
+          background: "#67c23a",
+          text: "27",
+          top: "",
+        },
+        {
+          value: 27,
+          height: "250",
+          background: "#e6a23c",
+          text: "28",
+          top: "",
+        },
+        {
+          value: 28,
+          height: "180",
+          background: "#f56c6c",
+          text: "29",
+          top: "",
+        },
+        {
+          value: 29,
+          height: "150",
+          background: "#909399",
+          text: "30",
+          top: "",
+        },
+      ],
+
       columns: [],
       arrIndex: [],
       loading: false,
@@ -34,68 +135,70 @@ export default {
     };
   },
   mounted() {
-    this.init();
-    window.onresize = () => {
-      console.time("aa");
-      this.init();
-      console.timeEnd("aa");
-    };
-    let clientH =
-      document.documentElement.clientHeight || document.body.clientHeight;
-    document.onscroll = (e) => {
-      let top = e.target.documentElement.scrollTop || e.target.body.scrollTop;
-
-      let height =
-        e.target.documentElement.scrollHeight || e.target.body.scrollHeight;
-
-      if (top + clientH >= height) {
-        this.loading = true;
-        this.pushElement().then(() => {
-          //  从接口最新获取的元素push到目前高度最小的一列
-          for (var index = 0; index < this.contentArr2.length; index++) {
-            this.arrIndex = [];
-            let arr = []; //找到高度最小的一列，可能有多个
-            let minHeight = 0; //高度最小的一列的高度
-            let pushIndex = 0; //高度最小的一列所在位置的索引
-
-            for (let i = 0; i < this.columns.length; i++) {
-              arr.push({
-                height:
-                  this.columns[i].columnArr[
-                    this.columns[i].columnArr.length - 1
-                  ].height,
-                top: this.columns[i].columnArr[
-                  this.columns[i].columnArr.length - 1
-                ].top,
-              });
-            }
-
-            minHeight = this.getMinHeight(arr);
-
-            this.getMinIndex(minHeight);
-            if (this.arrIndex.length > 0) {
-              pushIndex = Math.min.apply(null, this.arrIndex); //出现高度一样的，去索引最小的
-            }
-            this.columns[pushIndex].columnArr.push(this.contentArr[index]);
-
-            this.contentArr[index].top = minHeight + 20;
-            this.contentArr[index].value = this.contentArr2[index].value;
-            this.contentArr[index].text = this.contentArr2[index].text;
-            this.contentArr[index].url = this.contentArr2[index].url;
-
-            this.contentArr.push({
-              value: this.contentArr2[index].value,
-              height: "150",
-              background: "#909399",
-              text: this.contentArr2[index].text,
-              top: this.contentArr2[index].url,
-            });
-            this.loading = false;
-            console.log(this.contentArr);
-          }
+    photosList().then((res) => {
+      let arr = [];
+      res.forEach((element, index) => {
+        arr.push({
+          value: index,
+          height: element.height,
+          background: element.download_url,
+          text: index,
+          top: "",
         });
-      }
-    };
+      });
+      this.contentArr = arr;
+
+      this.init();
+      window.onresize = () => {
+        console.time("aa");
+        this.init();
+        console.timeEnd("aa");
+      };
+      let clientH =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      document.onscroll = (e) => {
+        let top = e.target.documentElement.scrollTop || e.target.body.scrollTop;
+
+        let height =
+          e.target.documentElement.scrollHeight || e.target.body.scrollHeight;
+
+        if (top + clientH >= height) {
+          this.loading = true;
+          this.pushElement().then(() => {
+            //  从接口最新获取的元素push到目前高度最小的一列
+            for (var index = 0; index < this.contentArr2.length; index++) {
+              this.arrIndex = [];
+              let arr = []; //找到高度最小的一列，可能有多个
+              let minHeight = 0; //高度最小的一列的高度
+              let pushIndex = 0; //高度最小的一列所在位置的索引
+
+              for (let i = 0; i < this.columns.length; i++) {
+                arr.push({
+                  height:
+                    this.columns[i].columnArr[
+                      this.columns[i].columnArr.length - 1
+                    ].height,
+                  top: this.columns[i].columnArr[
+                    this.columns[i].columnArr.length - 1
+                  ].top,
+                });
+              }
+
+              minHeight = this.getMinHeight(arr);
+
+              this.getMinIndex(minHeight);
+              if (this.arrIndex.length > 0) {
+                pushIndex = Math.min.apply(null, this.arrIndex); //出现高度一样的，去索引最小的
+              }
+
+              this.contentArr[index].top = minHeight + 20;
+              this.columns[pushIndex].columnArr.push(this.contentArr[index]);
+              this.loading = false;
+            }
+          });
+        }
+      };
+    });
   },
   methods: {
     myRandom() {
@@ -116,7 +219,7 @@ export default {
               background: "#409eff",
               text: i + this.contentArr.length,
               top: "",
-              url: this.myRandom(),
+              // url: this.myRandom(),
             });
             // this.contentArr2[i] = {
             //   value: i + this.contentArr.length,
@@ -192,7 +295,6 @@ export default {
         }
 
         this.contentArr[index].top = minHeight + 20;
-
         this.columns[pushIndex].columnArr.push(this.contentArr[index]);
       }
     },
@@ -201,13 +303,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.my_photos {
-  .el-image {
-    width: 100%;
-  }
-}
-</style>
 <style lang='scss' scoped>
 div,
 p {
@@ -225,7 +320,7 @@ p {
 .item {
   width: 100%;
   /* width: 120px; */
-  min-height: 40px;
+  min-height: 400px;
   color: #000;
   margin-top: 20px;
   display: flex;

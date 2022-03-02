@@ -9,17 +9,17 @@
         </p>
         <el-row type='flex' class="all_read">
           <el-col class="allread_item allread_border" :span="12">
-            <p>今日阅读 (播放) 数</p>
-            <span>36</span>
+            <p>今日浏览量</p>
+            <span>{{random(10,100)}}</span>
           </el-col>
           <el-col class="allread_item" :span="12">
             <p>今日阅读 (播放) 数</p>
-            <span>36</span>
+            <span>{{random(1,50)}}</span>
           </el-col>
         </el-row>
       </el-col>
       <el-col :span="24">
-        <el-button class="create_txt">进入创作中心</el-button>
+        <el-button @click="write" class="create_txt">进入创作中心</el-button>
       </el-col>
     </el-row>
 
@@ -32,8 +32,8 @@
       <el-col :span="24">
         <el-row>
           <el-col class="img_active" v-for="(item,index) in 12" :key="index" :span='6'>
-            <img src="https://picsum.photos/100/100" alt="">
-            <p>程序员{{index}}</p>
+            <img :src="handImg()" alt="">
+            <p>村民{{showName()}}</p>
           </el-col>
         </el-row>
       </el-col>
@@ -42,7 +42,120 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    // 第一个参数为你想生成的固定的文字开头比如: 云村村民xxxxx
+    // 第二个为你想生成出固定开头文字外的随机长度
+    new_random(prefix = "", randomLength = 7) {
+      // 兼容更低版本的默认值写法
+      prefix === undefined ? (prefix = "") : prefix;
+      randomLength === undefined ? (randomLength = 8) : randomLength;
+
+      // 设置随机用户名
+      // 用户名随机词典数组
+      let nameArr = [
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "g",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z",
+        ],
+      ];
+      // 随机名字字符串
+      let name = prefix;
+      // 循环遍历从用户词典中随机抽出一个
+      for (var i = 0; i < randomLength; i++) {
+        // 随机生成index
+        let index = Math.floor(Math.random() * 2);
+        let zm =
+          nameArr[index][Math.floor(Math.random() * nameArr[index].length)];
+        // 如果随机出的是英文字母
+        if (index === 1) {
+          // 则百分之50的概率变为大写
+          if (Math.floor(Math.random() * 2) === 1) {
+            zm = zm.toUpperCase();
+          }
+        }
+        // 拼接进名字变量中
+        name += zm;
+      }
+      // 将随机生成的名字返回
+      return name;
+    },
+
+    write() {
+      this.$message("暂未开放");
+    },
+    random(m, n) {
+      return Math.floor(Math.random() * (m - n) + n);
+    },
+    handImg() {
+      return `https://picsum.photos/100/100?random=${this.random(1, 1000)}`;
+    },
+
+    // 获取指定范围内的随机数
+    randomAccess(min, max) {
+      return Math.floor(Math.random() * (min - max) + max);
+    },
+
+    // 解码
+    decodeUnicode(str) {
+      //Unicode显示方式是\u4e00
+      str = "\\u" + str;
+      str = str.replace(/\\/g, "%");
+      //转换中文
+      str = unescape(str);
+      //将其他受影响的转换回原来
+      str = str.replace(/%/g, "\\");
+      return str;
+    },
+
+    /*
+     *@param Number NameLength 要获取的名字长度
+     */
+    getRandomName(NameLength) {
+      let name = "";
+      for (let i = 0; i < NameLength; i++) {
+        let unicodeNum = "";
+        unicodeNum = this.randomAccess(0x4e00, 0x9fa5).toString(16);
+        name += this.decodeUnicode(unicodeNum);
+      }
+      return name;
+    },
+    showName() {
+      let _num = this.random(1, 3);
+      let name = this.getRandomName(_num);
+      // console.log(name); // 输出内容：柎芨
+      return name;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -123,6 +236,7 @@ export default {};
       color: gray;
       font-size: 12px;
       width: 50px;
+      text-align: center;
     }
 
     img {

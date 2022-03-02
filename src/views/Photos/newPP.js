@@ -1,5 +1,4 @@
 
-console.log(666);
 const doc = document
 // 外层盒子
 function getScrollTop() {
@@ -35,12 +34,6 @@ var num2 = parseInt(Math.random() * (50 - 1 + 1) + 1)
 var newnum = `https://picsum.photos/${num}/${num1}?random=${num2}`
 // item.innerHTML = `<img src="https://picsum.photos/${num}/${num1}?random=${num2}" alt="">`
 var resultData = [
-    { "img": `https://picsum.photos/${num}/${num1}?random=${num2}`, "width": "400", "height": "539" },
-    { "img": `https://picsum.photos/${num}/${num1}?random=${num2}`, "width": "500", "height": "316" },
-    { "img": `https://picsum.photos/${num}/${num1}?random=${num2}`, "width": "527", "height": "289" },
-    { "img": `https://picsum.photos/${num}/${num1}?random=${num2}`, "width": "400", "height": "400" },
-    { "img": `https://picsum.photos/${num}/${num1}?random=${num2}`, "width": "500", "height": "313" },
-    { "img": `https://picsum.photos/${num}/${num1}?random=${num2}`, "width": "500", "height": "333" },
     { "img": "../images/6.jpg", "width": "400", "height": "400" },
     { "img": "../images/7.jpg", "width": "250", "height": "300" },
     { "img": "../images/8.jpg", "width": "250", "height": "300" },

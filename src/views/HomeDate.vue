@@ -1,32 +1,32 @@
 <template>
   <div class="clock-box">
     <div class="mydate ">
-      <h3>The time is now</h3>
+      <h3>The time is now | 现在时刻</h3>
       <div class="time wow fadeInDown">
-        <div>
+        <!-- <div>
           <span class="hour">{{ fixNum(Year) }}</span>
           <span>Year</span>
-        </div>
-        <div>
-          <span class="hour">{{fixNum(Month)  }}</span>
-          <span>Month</span>
-        </div>
-        <div>
-          <span class="hour">{{ fixNum(Day)  }}</span>
-          <span>Day</span>
-        </div>
+        </div> -->
 
-        <div>
+        <div class="new_month">
+          <span class="">{{fixNum(Month)}}</span>
+          <span>Month | 月</span>
+        </div>
+        <div class="new_month my_hours">
+          <span>{{ fixNum(Day)  }}</span>
+          <span>Day | 日</span>
+        </div>
+        <div class="">
           <span class="hour">{{ fixNum(hours)  }}</span>
-          <span>Hours</span>
+          <span>Hours 时</span>
         </div>
         <div>
           <span class="minutes">{{fixNum(minutes)   }}</span>
-          <span>Minutes</span>
+          <span>Minutes 分</span>
         </div>
         <div class="seconds-box">
           <span class="seconds">{{ fixNum(seconds)  }}</span>
-          <span>Seconds</span>
+          <span>Seconds 秒</span>
         </div>
       </div>
     </div>
@@ -148,22 +148,31 @@ export default {
       div:last-child span:last-child {
         background: #ec0062;
       }
-      div:nth-child(1) span {
+      // div:nth-child(1) span {
+      //   background: #39766d;
+      // }
+      // div:nth-child(1) span:last-child {
+      //   background: #26504a;
+      // }
+      // div:nth-child(2) span {
+      //   background: #39766d;
+      // }
+      // div:nth-child(2) span:last-child {
+      //   background: #26504a;
+      // }
+      // div:nth-child(3) span {
+      //   background: #39766d;
+      // }
+      // div:nth-child(3) span:last-child {
+      //   background: #26504a;
+      // }
+      .my_hours {
+        margin-right: 50px;
+      }
+      .new_month span {
         background: #39766d;
       }
-      div:nth-child(1) span:last-child {
-        background: #26504a;
-      }
-      div:nth-child(2) span {
-        background: #39766d;
-      }
-      div:nth-child(2) span:last-child {
-        background: #26504a;
-      }
-      div:nth-child(3) span {
-        background: #39766d;
-      }
-      div:nth-child(3) span:last-child {
+      .new_month span:last-child {
         background: #26504a;
       }
     }

@@ -2,8 +2,8 @@
   <div class="user_box">
     <div class="card">
       <div class="UserCoverGuide">
-        <img src="@/assets/images/banner1.png" alt="" />
-        <el-button class="edit_top"><i class="el-icon-camera-solid"></i> 编辑封面图片</el-button>
+        <img src="@/assets/images/bg1.jpg" alt="" />
+        <el-button @click="download" class="edit_top"><i class="el-icon-download"></i> 下载我的简历</el-button>
       </div>
       <div class="user_info" :class="noEdit?'':'edit_box'">
         <el-upload class="user_img" action="#" :http-request="httpRequestwear" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
@@ -40,8 +40,8 @@
           <el-col :span="17">
             <span v-if="noEdit">{{initQuery.gender?initQuery.gender:'未知'}}</span>
             <span v-else>
-              <el-radio v-model="initQuery.sex" label="男">男</el-radio>
-              <el-radio v-model="initQuery.sex" label="女">女</el-radio>
+              <el-radio v-model="initQuery.gender" label="男">男</el-radio>
+              <el-radio v-model="initQuery.gender" label="女">女</el-radio>
             </span>
           </el-col>
           <el-col class="info_left" :span="7">邮箱</el-col>
@@ -62,10 +62,10 @@
     <el-row type="flex" class="center_content">
       <el-col :span="17">
         <Center />
-        <div class="loading_more">
+        <!-- <div class="loading_more">
           查看更多文章
           <i class="el-icon-caret-right"></i>
-        </div>
+        </div> -->
       </el-col>
       <el-col class="right_info" :span="7">
         <Right />
@@ -77,7 +77,7 @@
 <script>
 import Center from "./Center.vue";
 import Right from "./Right.vue";
-import { getUserInfo, setUserInfo, userUploadLogo } from "@/api";
+import { getUserInfo, setUserInfo, userUploadLogo, download } from "@/api";
 export default {
   components: { Center, Right },
   data() {
@@ -100,6 +100,29 @@ export default {
     this.init();
   },
   methods: {
+    async download() {
+      let data = await download({ url: "" });
+      console.log("blob", data);
+      // 创建blob对象，解析流数据
+      const blob = new Blob([data], {
+        // 如何后端没返回下载文件类型，则需要手动设置：type: 'application/pdf;chartset=UTF-8' 表示下载文档为pdf，如果是word则设置为msword，excel为excel
+        type: "application/pdf;chartset=UTF-8",
+      });
+      const a = document.createElement("a");
+      // 兼容webkix浏览器，处理webkit浏览器中href自动添加blob前缀，默认在浏览器打开而不是下载
+      const URL = window.URL || window.webkitURL;
+      // 根据解析后的blob对象创建URL 对象
+      const herf = URL.createObjectURL(blob);
+      // 下载链接
+      a.href = herf;
+      // 下载文件名,如果后端没有返回，可以自己写a.download = '文件.pdf'
+      a.download = "前端开发-刘成龙-19963465520.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      // 在内存中移除URL 对象
+      window.URL.revokeObjectURL(herf);
+    },
     async init() {
       let data = await getUserInfo();
       this.initQuery = data;
@@ -179,13 +202,17 @@ export default {
       height: 100%;
       height: 240px;
       overflow: hidden;
-      border-top-right-radius: 1px;
-      border-top-left-radius: 1px;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
       transition: all 0.5s;
       position: relative;
       img {
+        border-radius: 10px;
         width: 100%;
-        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: -161px;
+        // height: 100%;
       }
       .edit_top {
         position: absolute;

@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="123" style="width:100%;height:500px;">
+      <el-button @click="download">下载</el-button>
       <h1 style="font-size:16px;text-align:center;">
         <div class="box">
           <h1>注册</h1>
@@ -16,7 +17,7 @@
       <el-upload :http-request="httpRequestwear" class="upload_box" action="#" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
         <div style="width：300px;background:blue;height:100px" class="shang_chuan">上传成绩</div>
       </el-upload>
-      <el-button @click="download">下载</el-button>
+
       <el-button @click="node">测试连接node</el-button>
       {{testNginx}}
 
@@ -63,8 +64,27 @@ export default {
       console.log(data);
     },
     async download() {
-      let data = await download({ url: "/public" });
-      console.log(data);
+      let data = await download({ url: "" });
+      console.log(123, data);
+      // 创建blob对象，解析流数据
+      const blob = new Blob([data], {
+        // 如何后端没返回下载文件类型，则需要手动设置：type: 'application/pdf;chartset=UTF-8' 表示下载文档为pdf，如果是word则设置为msword，excel为excel
+        type: "application/pdf;chartset=UTF-8",
+      });
+      const a = document.createElement("a");
+      // 兼容webkix浏览器，处理webkit浏览器中href自动添加blob前缀，默认在浏览器打开而不是下载
+      const URL = window.URL || window.webkitURL;
+      // 根据解析后的blob对象创建URL 对象
+      const herf = URL.createObjectURL(blob);
+      // 下载链接
+      a.href = herf;
+      // 下载文件名,如果后端没有返回，可以自己写a.download = '文件.pdf'
+      a.download = "前端开发-刘成龙-19963465520.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      // 在内存中移除URL 对象
+      window.URL.revokeObjectURL(herf);
     },
     httpRequestwear(params) {
       // console.log(123457, params);

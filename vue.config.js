@@ -37,24 +37,60 @@ module.exports = {
                     '^/music-api': ''
                 }
             },
-            '/dev': {
-                target: 'http://192.168.2.232/api/gapf-query',//对应自己的接口
+            '/cors': {
+                target: 'http://api.tianapi.com/',//对应自己的接口
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/dev': ''
+                    '^/cors': '/'
                 }
             }
         },
         disableHostCheck: true
     },
+    //webpack配置
     configureWebpack: {
         name: 'title',
+        cache: {
+            type: 'filesystem', // 使用文件缓存
+        },
         resolve: {
             alias: {
                 '@': resolve('src'),
-                // '~': resolve('src/styles')
-            }
-        }
+                '@img': resolve('src/assets/images'),
+            },
+            extensions: [".ts", ".tsx", ".js", ".json"]
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    loader: 'ts-loader',
+                    exclude: /node_modules/,
+                    options: {
+                        appendTsSuffixTo: [/\.vue$/],
+                    }
+                },
+                // loader=>
+                // { test: /\.css/, use: ['style-loader', 'css-loader'] },
+                // { test: /\.less/, use: ['style-loader', 'css-loader', 'less-loader'] },
+                //图片值如果大于limit给定的字节 不被转base64
+                // {
+                //     test: /\.jpg|png|gif$/,
+                //     use: {
+                //         loader: 'url-loader',
+                //         options: {
+                //             limit: 1024 * 200000,
+                //             // outputPath: 'image'//打包存放路径
+                //         }
+                //     }
+                // },
+                /*limit: 10,限制 图片大小 10B，小于限制会将图片转换为 base64格式*/
+
+            ]
+        },
+        plugins: [
+
+        ]
     },
 
     // chainWebpack: config => {

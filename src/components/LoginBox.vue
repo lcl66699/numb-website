@@ -5,7 +5,7 @@
         <p class="login_title">扫码登录</p>
         <div class="content_left">
           <div class="Qrcode-img">
-            <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fremote.yunnan.cn%2Fqr%2Fphp%2Fqr.php%3Fd%3Dhttp%3A%2F%2Fsociety.yunnan.cn%2Fsystem%2F2021%2F10%2F31%2F031741994.shtml&refer=http%3A%2F%2Fremote.yunnan.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638280676&t=41f7aa04b835dce5d6097752bb00c4cf" alt="">
+            <img src="@/assets/images/qr_code.png" alt="">
           </div>
           <p>打开微信 App</p>
           <p>在「我的」页面顶部打开扫一扫</p>
@@ -17,36 +17,49 @@
       <div class="right">
         <el-tabs class="right_box" v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="密码登录" name="first">
-            <div class="login_input">
+            <el-form ref="loginform" :model="loginQuery" :rules="loginRules" label-width="0px">
+              <el-form-item class="login_input" prop="username">
+                <el-input v-model="loginQuery.username" placeholder="请输入手机号或用户名" clearable />
+              </el-form-item>
+              <el-form-item class="login_input" prop="password">
+                <el-input v-model="loginQuery.password" placeholder="请输入密码" type="password" show-password />
+              </el-form-item>
+              <div class="login_options">
+                <span @click="forget" class="forget">忘记密码？</span>
+              </div>
+              <div class="login_button">
+                <el-button :loading="loading" @click="login">
+                  <span v-if="!loading">登 录</span>
+                  <span v-else>登 录 中...</span>
+                </el-button>
+              </div>
+            </el-form>
+            <!-- <div class="login_input">
               <el-input placeholder="手机号或用户名" v-model="loginQuery.username" clearable />
             </div>
             <div class="login_input">
               <el-input placeholder="密码" v-model="loginQuery.password" show-password />
-            </div>
-            <div class="login_options">
-              <span class="forget">忘记密码？</span>
-            </div>
-            <div class="login_button">
-              <el-button @click="login">登录</el-button>
-            </div>
+            </div> -->
 
           </el-tab-pane>
           <el-tab-pane label="用户注册" name="second">
-            <div class="login_input">
-              <el-input placeholder="手机号或用户名" v-model="registerQuery.username" clearable />
-            </div>
-            <div class="login_input">
-              <el-input placeholder="密码" v-model="registerQuery.password" show-password />
-            </div>
-            <div class="login_input">
-              <el-input placeholder="请确认密码" v-model="registerQuery.confirmPassword" show-password />
-            </div>
-            <div class="login_options">
-              <span class="login_info">未注册手机验证后自动登录，注册即代表同意《西瓜协议》《隐私保护指引》</span>
-            </div>
-            <div class="login_button">
-              <el-button @click="register">注册</el-button>
-            </div>
+            <el-form ref="form" :model="user" :rules="rules" label-width="0px">
+              <el-form-item class="login_input" prop="username">
+                <el-input v-model="user.username" placeholder="请输入手机号或用户名" clearable />
+              </el-form-item>
+              <el-form-item class="login_input" prop="password">
+                <el-input v-model="user.password" placeholder="请输入密码" type="password" show-password />
+              </el-form-item>
+              <el-form-item class="login_input" prop="confirmPassword">
+                <el-input v-model="user.confirmPassword" placeholder="请确认密码" type="password" show-password />
+              </el-form-item>
+              <div class="login_options">
+                <span class="login_info">未注册手机验证后自动登录，注册即代表同意《瓜村协议》《隐私保护指引》</span>
+              </div>
+              <div class="login_button">
+                <el-button @click="register">注册</el-button>
+              </div>
+            </el-form>
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -58,48 +71,113 @@
 import { login, register } from "@/api/index";
 export default {
   data() {
+    const equalToPassword = (rule, value, callback) => {
+      if (this.user.password !== value) {
+        callback(new Error("两次输入的密码不一致"));
+      } else {
+        callback();
+      }
+    };
     return {
       activeName: "first",
+      loading: false,
+      user: {
+        username: undefined,
+        password: undefined,
+        confirmPassword: undefined,
+      },
+      // 表单校验
+      loginRules: {
+        username: [
+          { required: true, message: "用户名不能为空", trigger: "blur" },
+        ],
+        password: [
+          { required: true, message: "密码不能为空", trigger: "blur" },
+          {
+            min: 6,
+            max: 20,
+            message: "长度在 6 到 20 个字符",
+            trigger: "blur",
+          },
+        ],
+      },
+      rules: {
+        username: [
+          { required: true, message: "用户名不能为空", trigger: "blur" },
+        ],
+        password: [
+          { required: true, message: "密码不能为空", trigger: "blur" },
+          {
+            min: 6,
+            max: 20,
+            message: "长度在 6 到 20 个字符",
+            trigger: "blur",
+          },
+        ],
+        confirmPassword: [
+          { required: true, message: "确认密码不能为空", trigger: "blur" },
+          { required: true, validator: equalToPassword, trigger: "blur" },
+        ],
+      },
       loginQuery: {
-        username: "admin",
-        password: "123",
+        username: "chenglong",
+        password: "admin123",
       },
       registerQuery: {
-        username: "admin",
-        password: "123",
-        confirmPassword: "123",
+        username: "",
+        password: "",
+        confirmPassword: "",
       },
     };
   },
   methods: {
-    async login() {
-      let data = await login(this.loginQuery);
-      if (data.code == 200) {
-        this.$message({
-          message: "登录成功",
-          type: "success",
-        });
-        sessionStorage.setItem("token", `Bearer ${data.token}`);
-        this.$parent.$parent.close();
-        this.$emit("loginSus");
-        this.$router.push("/user");
-        sessionStorage.setItem("isCome", 1); //判断是不是首次进入
-      } else {
-        this.$message.error(data.msg);
-        this.loginQuery.password = "";
-      }
+    forget() {
+      this.$message("此功能即将开放~");
     },
+    login() {
+      this.$refs["loginform"].validate(async (valid) => {
+        if (valid) {
+          this.loading = true;
+          let data = await login(this.loginQuery);
+          if (data.code == 200) {
+            this.$message({
+              message: "登录成功",
+              type: "success",
+            });
+            sessionStorage.setItem("token", `Bearer ${data.token}`);
+            this.$parent.$parent.close();
+            this.$emit("loginSus");
+            this.$router.push("/user");
+            sessionStorage.setItem("isCome", 1); //判断是不是首次进入
+          } else {
+            this.$message.error(data.msg);
+            this.loginQuery.password = "";
+          }
+          this.loading = false;
+        }
+      });
+    },
+
     async register() {
-      let data = await register(this.registerQuery);
-      if (data.code == 200) {
-        this.$message({
-          message: "注册成功,请前往登录",
-          type: "success",
-        });
-      } else {
-        this.$message.error(data.msg);
-        this.loginQuery.password = "";
-      }
+      this.$refs["form"].validate((valid) => {
+        if (valid) {
+          updateUserPwd(this.user.username, this.user.password).then(
+            (response) => {
+              this.$modal.msgSuccess("修改成功");
+            }
+          );
+        }
+      });
+      // let data = await register(this.registerQuery);
+      // if (data.code == 200) {
+      //   this.$message({
+      //     message: "注册成功,请前往登录",
+      //     type: "success",
+      //   });
+      // } else {
+      //   this.$message.error(data.msg);
+      //   this.loginQuery.password = "";
+      // }
     },
 
     handleClick(tab, event) {
@@ -193,9 +271,6 @@ export default {
 .login_box {
   .el-input__inner {
     border: none;
-  }
-  .el-tabs__content {
-    padding: 10px 0;
   }
   .el-tabs__item.is-active {
     color: #121212;

@@ -11,7 +11,7 @@ VueRouter.prototype.push = function push(location) {
 // 按顺序引入
 import Music from '@/views/Music/Music.vue'
 import Foods from '@/views/Foods/Foods.vue'
-import Photos from '@/views/Photos/Photos.vue'
+// import Photos from ''
 import Chat from '@/views/Chat/Chat.vue'
 import QQ from '../views/Chat/QQ.vue'
 import Lemon from '@/views/Lemon/Lemon.vue'
@@ -79,7 +79,7 @@ const routes = [
       {
         path: '/photos',
         name: 'Photos',
-        component: Photos
+        component: () => import('@/views/Photos/Photos.vue')
       },
       {
         path: '/chat',
@@ -115,6 +115,11 @@ const routes = [
         path: '/user',
         name: 'user',
         component: () => import('@/views/UserInfo/UserInfo.vue')
+      },
+      {
+        path: '/msgList',
+        name: 'msgList',
+        component: () => import('@/views/Others/msgList.vue')
       },
     ]
   },

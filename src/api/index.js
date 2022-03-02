@@ -11,8 +11,8 @@ import request from '@/utils/request'
 // }
 let baseUrl = '/api'
 if (process.env.NODE_ENV === 'development') {
-    // baseUrl = 'http://localhost:3000/api'
-    baseUrl = 'http://39.106.5.96:3000/api'
+    // baseUrl = 'http://39.106.5.96:3000/api'
+    baseUrl = 'http://localhost:3000/api'
 }
 /**
  * 新接口开始
@@ -84,7 +84,9 @@ export function download(query) {
     return request({
         url: baseUrl + "/user/download",
         method: "get",
-        params: query
+        params: query,
+        responseType: "blob",
+        headers: { "Content-Type": "multipart/form-data" }
     });
 }
 
@@ -98,6 +100,23 @@ export function userUpload(query) {
     });
 }
 
+//访客留言的增加
+export function insertMsg(data) {
+    return request({
+        url: baseUrl + "/user/insertMsg",
+        method: "post",
+        data
+    });
+}
+
+// 查看访客留言
+export function searchMsglist(params) {
+    return request({
+        url: baseUrl + "/user/search/msglist",
+        method: "get",
+        params
+    });
+}
 
 
 
@@ -179,5 +198,31 @@ export function getHotReview() {
     }).catch((error) => {
         console.log('网易热评', error);
     })
+}
+
+var cors = 'http://api.tianapi.com/'
+
+if (process.env.NODE_ENV === 'development') {
+    cors = '/cors'
+}
+
+//抖音
+export function dyvideohot(params) {
+    return request({
+        url: cors + "/dyvideohot/index",
+        method: "get",
+        params: {
+            key
+        }
+    });
+}
+
+//图片列表
+export function photosList(params) {
+    return request({
+        url: 'https://picsum.photos/v2/list?page=2&limit=100',
+        method: "get",
+        params
+    });
 }
 
