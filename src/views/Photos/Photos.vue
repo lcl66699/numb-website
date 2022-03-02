@@ -123,11 +123,7 @@ export default {
   margin-top: 10px;
   // width: calc(100% / 3 - 20px);
 }
-.item img {
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-}
+
 .demo-image__lazy .el-image {
   display: block;
   height: 100%;

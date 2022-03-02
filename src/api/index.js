@@ -220,7 +220,7 @@ export function dyvideohot(params) {
 //图片列表
 export function photosList(params) {
     return request({
-        url: 'https://picsum.photos/v2/list?page=2&limit=100',
+        url: 'https://picsum.photos/v2/list',
         method: "get",
         params
     });

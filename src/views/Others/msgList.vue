@@ -1,5 +1,9 @@
 <template>
   <div class="msg_box">
+    <!-- <video width="100%" autoplay="autoplay" loop="loop" muted="muted">
+      <source src="./video.mp4" type="video/mp4">
+      </source>
+    </video> -->
     <div class="wantConsult">
       <div class="wrap_mar">
         <div class="wantConsult_btm clear">
@@ -651,6 +655,11 @@ export default {
 .email_css {
   font-size: 14px;
   color: #606266;
+}
+video {
+  position: fixed;
+  z-index: -9999;
+  -webkit-filter: grayscale(100%);
 }
 </style>
 <style >

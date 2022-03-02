@@ -12,6 +12,8 @@
     "core-js": "^3.8.1",
     "echarts": "^5.1.1",
     "element-ui": "^2.14.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "swiper": "^6.8.4",
     "vue": "^2.6.11",
     "vue-amap": "^0.5.10",

@@ -19,6 +19,8 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'; //
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]); //使用模组
 Vue.use(VueAwesomeSwiper)//全局注册插件
 
+import htmlToPdf from '@/utils/htmlToPdf'
+Vue.use(htmlToPdf)
 //动画
 import animated from 'animate.css'
 Vue.use(animated)
