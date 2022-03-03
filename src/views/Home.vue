@@ -1,8 +1,19 @@
 <template>
   <div class="home">
 
-    <div class="headImg-box">
-      <img src="@/assets/images/banner1.png" alt="" />
+    <div class="headImg_box">
+
+      <!-- <img src="images/video-img.jpg" id="video_img" > -->
+      <!-- <img src="@/assets/images/banner1.png" alt="" /> -->
+      <!-- controls -->
+      <video muted poster="@/assets/images/banner_head.png" class="my_head_video" name="media" autoplay loop id="video" preload="auto">
+        <source src="http://39.106.5.96:3000/www/public/FormatFactoryPart1.mp4" type="video/mp4">
+        <!-- <source src="http://39.106.5.96:3000/www/public/FormatFactoryPart4.mp4" type="video/mp4"> -->
+        <!-- <source src="http://39.106.5.96:3000/www/public/home2.mp4" type="video/mp4"> -->
+        您的浏览器暂不支持视频播放
+      </video>
+
+      <!-- <img src="@/assets/images/banner1.png" alt="" /> -->
       <!-- <img src="@/assets/images/bg3.jpg" alt="" /> -->
       <div class="content wow bounceInLeft">
         <p>Hi，楼上雅间请！</p>
@@ -139,7 +150,7 @@
         </div>
 
         <div class="think-display">
-          <div class="think-son">
+          <div class="think-son wow zoomIn">
             <img src="../assets/images/homeImgs/tongyang.jpg" class="img-responsive" />
             <div class="think-content">
               <h4>保护姑娘，贯彻落实</h4>
@@ -149,7 +160,7 @@
               <p style="text-align: right;">--痛痒</p>
             </div>
           </div>
-          <div class="think-son">
+          <div class="think-son wow zoomIn">
             <img src="../assets/images/homeImgs/tx1.png" class="img-responsive" />
             <div class="think-content">
               <h4>我们都有美好的未来</h4>
@@ -159,7 +170,7 @@
               <p style="text-align: right;">--愿爱无忧</p>
             </div>
           </div>
-          <div class="think-son">
+          <div class="think-son wow zoomIn">
             <img src="../assets/images/homeImgs/tx3.png" class="img-responsive" />
             <div class="think-content">
               <h4>保持理智</h4>
@@ -170,7 +181,7 @@
               <p style="text-align: right;">--热心市民李先生</p>
             </div>
           </div>
-          <div class="think-son">
+          <div class="think-son wow zoomIn">
             <img src="../assets/images/homeImgs/tx2.png" class="img-responsive" />
             <div class="think-content">
               <h4>故事你真的在听吗</h4>
@@ -280,14 +291,21 @@ export default {
 </script>
 <style lang="scss">
 .home {
-  .headImg-box {
+  .headImg_box {
     width: 100%;
-    height: 65vh;
+    // height: 65vh;
+    height: 91vh;
     position: relative;
     // background: left / cover fixed no-repeat url("../assets/images/bg3.jpg");
     img {
       width: 100%;
       height: 100%;
+    }
+    .my_head_video {
+      width: 100%;
+      min-height: 600px;
+      height: 100%;
+      object-fit: fill;
     }
     .content {
       position: absolute;

@@ -34,8 +34,8 @@
             <a href="#" class="fab fa-youtube"></a>
           </div>
           <div class="buttons">
-            <a href="" @click.prevent="login">登 录</a>
-            <a href="" @click.prevent="goHome">访客进入</a>
+            <a href="" class=" flipInX wow" @click.prevent="login">登 录</a>
+            <a href="" class=" flipInX wow" @click.prevent="goHome">访客进入</a>
           </div>
         </div>
       </div>
@@ -49,6 +49,7 @@
 <script>
 import LoginBox from "@/components/LoginBox.vue";
 import compDiago from "@/components/compDiago.vue";
+import { WOW } from "wowjs";
 export default {
   data() {
     return {
@@ -58,6 +59,20 @@ export default {
   components: {
     LoginBox,
     compDiago,
+  },
+  mounted() {
+    //第一种写法，可以设置wow中属性
+    this.$nextTick(() => {
+      // 在dom渲染完后,再执行动画
+      var wow = new WOW({
+        boxClass: "wow", ///动画元件css类（默认为wow）
+        animateClass: "animated", //动画css类（默认为animated）
+        offset: 0, //到元素距离触发动画（当默认为0）
+        mobile: true, //在移动设备上触发动画（默认为true）
+        live: true, //对异步加载的内容进行操作（默认为true）
+      });
+      wow.init();
+    });
   },
   methods: {
     //登录传来的emit,表示登录成功,请求个人信息接口
@@ -176,7 +191,6 @@ export default {
 #home {
   height: 100vh;
   min-height: 500px;
-  // background: url("../../assets/images/bg.jpg") no-repeat center;
   background: url("../../assets/images/bg1.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;

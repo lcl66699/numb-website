@@ -323,7 +323,9 @@ export default {
 
 <style lang="scss" scoped>
 .msg_box {
-  background: url("~@/assets/images/msgImgs/bg.jpg") no-repeat fixed;
+  background: url("~@/assets/images/msgImgs/QQ截图20220303135642.png") no-repeat
+    fixed;
+  background-size: 100% 100%;
   min-height: 100vh;
   height: 100%;
   margin: 0px;

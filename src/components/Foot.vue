@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="foot-display">
         <div class="footer-logo foot-flex">
-          <h2>lcl个人博客</h2>
+          <h2>lcl个人空间</h2>
           <p>人生唯一确定的就是不确定的人生</p>
           <button @click="aboutme" class="">About Me</button>
         </div>

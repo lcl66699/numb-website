@@ -5,14 +5,14 @@
       <el-button plain round type="warning" @click="getSource">随机更换评论</el-button>
       <el-button plain round type="danger" @click="download">生成PDF</el-button>
       <el-button plain round type="danger" @click="addImg">生成图片</el-button>
-      <el-tooltip class="item" effect="dark" content="Bottom Center 提示文字" placement="bottom">
+      <el-tooltip class="" effect="dark" content="Bottom Center 提示文字" placement="bottom">
         <div slot="content">
           温馨提示：下方文字点击后可进行自定义编辑，包括内容编辑和歌曲名字编辑；
           <br />
           <br />
           编辑完成后，点击上方的按钮可以生成pdf或图片哦~
         </div>
-        <el-button type="info" icon="el-icon-info" circle></el-button>
+        <el-button type="info " icon="el-icon-info" circle></el-button>
       </el-tooltip>
     </div>
     <div id="pdfDom" class="music_comment">
@@ -48,7 +48,7 @@ export default {
       resObj: {
         content: `奈何一个人随着年龄的增长，梦想便不复轻盈，
           他开始用双手掂量生活，更看重果实，而非花朵。`,
-        source: "你好",
+        source: "信仰",
       },
       baseImg: ``,
       dialogVisible: false,
