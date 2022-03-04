@@ -123,7 +123,8 @@
       <div v-loading='listLoading' class="msgCon">
         <div v-for="(item,index) in msgList" :key="index" class='msgBox'>
           <div class="headUrl">
-            <img src='@/assets/images/msgImgs/tx.jpg' width='50' height='50'>
+            <!-- <img src='@/assets/images/msgImgs/tx.jpg' width='50' height='50'> -->
+            <img :src="handImg()" width='50' height='50'>
             <div>
               <span class="title">{{item.username?item.username:'-'}}</span>
               <span class="time">{{item.createTime?handTimer(item.createTime):'-'}}</span>
@@ -255,6 +256,12 @@ export default {
     // }
   },
   methods: {
+    handImg() {
+      return `https://picsum.photos/50/50?random=${this.random(1, 1000)}`;
+    },
+    random(m, n) {
+      return Math.floor(Math.random() * (m - n) + n);
+    },
     async handleCurrentChange(val) {
       this.getQuery.pageNum = val;
       await this.init();

@@ -54,9 +54,11 @@ export default {
 
     // 页面尺寸改变时实时触发
     window.onresize = () => {
-      console.log("onresize重写定义瀑布流");
       //重新定义瀑布流
-      waterFall(this, this.$refs.box, { margin: 4, vgap: 15, hgap: 15 });
+      if (this.$refs.box) {
+        console.log("onresize重写定义瀑布流", this.$refs.box);
+        waterFall(this, this.$refs.box, { margin: 4, vgap: 15, hgap: 15 });
+      }
     };
 
     //节流函数
@@ -83,7 +85,7 @@ export default {
       let scrollHeight = document.documentElement.scrollHeight; //总高度
       // console.log(scrollTop, clientHeight, scrollHeight);
       //不到底就触发
-      if (scrollTop + clientHeight + 30 >= scrollHeight && this.flag) {
+      if (scrollTop + clientHeight >= scrollHeight && this.flag) {
         // 滚动到底部，逻辑代码
         //事件处理
         console.log("我已经滚动到底部了触发这个事件了"); //此处可以添加数据请求

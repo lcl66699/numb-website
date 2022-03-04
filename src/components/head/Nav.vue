@@ -205,7 +205,7 @@ $activateColor: #10aeb5;
     justify-content: center;
     align-items: center;
     .logo {
-      width: 170px;
+      width: 173px;
       cursor: pointer;
       float: left;
       height: 90px;

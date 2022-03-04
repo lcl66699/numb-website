@@ -11,8 +11,8 @@ import request from '@/utils/request'
 // }
 let baseUrl = '/api'
 if (process.env.NODE_ENV === 'development') {
-    // baseUrl = 'http://39.106.5.96:3000/api'
-    baseUrl = 'http://localhost:3000/api'
+    baseUrl = 'http://39.106.5.96:3000/api'
+    // baseUrl = 'http://localhost:3000/api'
 }
 /**
  * 新接口开始
@@ -200,10 +200,10 @@ export function getHotReview() {
     })
 }
 
-var cors = 'http://api.tianapi.com/'
+var cors = '/cors'
 
 if (process.env.NODE_ENV === 'development') {
-    cors = '/cors'
+    var cors = '/cors'
 }
 
 //抖音

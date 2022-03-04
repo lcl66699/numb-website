@@ -38,10 +38,10 @@ module.exports = {
                 }
             },
             '/cors': {
-                target: 'http://api.tianapi.com/',//对应自己的接口
+                target: 'https://api.tianapi.com/',//对应自己的接口,抖音视频
                 changeOrigin: true,
                 pathRewrite: {
-                    '^/cors': '/'
+                    '^/cors': ''
                 }
             }
         },

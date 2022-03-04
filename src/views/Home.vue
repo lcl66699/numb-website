@@ -6,10 +6,10 @@
       <!-- <img src="images/video-img.jpg" id="video_img" > -->
       <!-- <img src="@/assets/images/banner1.png" alt="" /> -->
       <!-- controls -->
-      <video muted poster="@/assets/images/banner_head.png" class="my_head_video" name="media" autoplay loop id="video" preload="auto">
-        <source src="http://39.106.5.96:3000/www/public/FormatFactoryPart1.mp4" type="video/mp4">
-        <!-- <source src="http://39.106.5.96:3000/www/public/FormatFactoryPart4.mp4" type="video/mp4"> -->
-        <!-- <source src="http://39.106.5.96:3000/www/public/home2.mp4" type="video/mp4"> -->
+      <video muted poster="@/assets/images/banner_head.png" class="my_head_video" name="media" autoplay="autoplay" loop="loop" id="video" preload="auto">
+        <!-- <source src="http://39.106.5.96:3000/www/public/FormatFactoryPart1.mp4" type="video/mp4"> -->
+        <!-- <source src="/www/public/FormatFactoryPart1.mp4" type="video/mp4"> -->
+        <source src="/www/public/yasuo.mp4" type="video/mp4">
         您的浏览器暂不支持视频播放
       </video>
 
@@ -38,7 +38,7 @@
           <h1 class="pull-left">家常便饭</h1>
           <span class="pull-right">
             <!-- <a href="index.html"></a> -->
-            <router-link to="/foods">更多</router-link>
+            <!-- <router-link to="/foods">更多</router-link> -->
           </span>
         </div>
 

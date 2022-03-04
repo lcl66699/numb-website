@@ -127,8 +127,13 @@ const routes = [
 
 
   {
-    path: '*',
+    path: '/404',
     name: 'page404',
+    component: () => import('../components/404.vue')
+  },
+  {
+    path: '*',
+    name: '404',
     component: () => import('../components/404.vue')
   },
 ]

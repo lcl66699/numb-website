@@ -1,5 +1,5 @@
 <template>
-  <div @click="ishanderHeight" class="wrapper123">
+  <div @click="ishanderHeight" class="">
     <div class="head_btn">
 
       <el-button plain round type="warning" @click="getSource">随机更换评论</el-button>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <el-dialog title="提示:长按保存图片哦" :visible.sync="dialogVisible" width="30%">
+    <el-dialog title="提示:点击右键可图片另存为哦" :visible.sync="dialogVisible" width="30%">
       <img class="my_img_diago" :src="baseImg" alt="">
     </el-dialog>
 
@@ -134,6 +134,7 @@ export default {
   }
 }
 .head_btn {
+  min-width: 800px;
   height: 60px;
   display: flex;
   justify-content: center;
