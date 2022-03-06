@@ -12,7 +12,7 @@ import echarts from "echarts";
 // import "../../../../node_modules/echarts/map/js/china";
 // import "../../../../node_modules/echarts/map/js/world";
 // import { postCovidCity } from "../../../api/index";
-import chinaMap from "./china.json";
+// import chinaMap from "./china.json";
 import Virus from "../../../api/index";
 export default {
   data() {
@@ -32,7 +32,7 @@ export default {
     },
   },
   mounted() {
-    // 基于准备好的dom，初始化echarts实例
+    // 基于准备好的dom，初始化echarts实例zz
     // var myChart = echarts.init(document.getElementById("main"));
 
     // 请求数据

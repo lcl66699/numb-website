@@ -43,7 +43,7 @@
         </div>
 
         <div class="page-content">
-          <div class="container-box">
+          <div class="wow zoomIn container-box">
             <a href="##">
               <div class="picture">
                 <img src="../assets/images/homeImgs/food2.jpg" class="img-responsive" />
@@ -54,7 +54,7 @@
               </div>
             </a>
           </div>
-          <div class="container-box">
+          <div class="wow zoomIn container-box">
             <a href="##">
               <div class="picture">
                 <img src="../assets/images/homeImgs/huoguo.jpg" class="img-responsive" />
@@ -65,7 +65,7 @@
               </div>
             </a>
           </div>
-          <div class="container-box">
+          <div class="wow zoomIn container-box">
             <a href="##">
               <div class="picture">
                 <img src="../assets/images/homeImgs/food1.jpg" class="img-responsive" />

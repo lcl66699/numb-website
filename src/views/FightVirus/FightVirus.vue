@@ -12,6 +12,7 @@
       <!-- 地图 -->
       <div>
         <!-- <Mymap /> -->
+        <chinaMap />
       </div>
 
       <!-- 海外疫情表格信息-->
@@ -49,6 +50,7 @@ import Covid from "./Covid/Covid";
 import Virus from "../../api/index";
 import Count from "./Count/Count";
 import Mymap from "./Mymap/Mymap";
+import chinaMap from "./Mymap/chinaMap";
 import news from "./news/news";
 // 海外-中国疫情表格信息 element-ui
 import ChinaNcov from "./TableNcov/ChinaNcov";
@@ -68,6 +70,7 @@ export default {
   },
   name: "Home",
   components: {
+    chinaMap,
     Covid, //病毒信息
     Count,
     Mymap,

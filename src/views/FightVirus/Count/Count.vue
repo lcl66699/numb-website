@@ -7,11 +7,10 @@
       <div class="count">
         <p class="lastDay">
           较昨日
-          <span class="currentConfirmedCount"
-            >{{
+          <span class="currentConfirmedCount">{{
               countdata.currentConfirmedIncr > 0
                 ? `+${countdata.currentConfirmedIncr}`
-                : `${countdata.currentConfirmedIncr}`
+                : `${countdata.currentConfirmedIncr?countdata.currentConfirmedIncr:'-'}`
             }}
           </span>
         </p>
@@ -23,11 +22,10 @@
       <div class="count">
         <p class="lastDay">
           较昨日
-          <span class="suspectedCount"
-            >{{
+          <span class="suspectedCount">{{
               countdata.suspectedIncr > 0
                 ? `+${countdata.suspectedIncr}`
-                : `${countdata.suspectedIncr}`
+                : `${countdata.suspectedIncr?countdata.suspectedIncr:'-'}`
             }}
           </span>
         </p>
@@ -37,11 +35,10 @@
       <div class="count">
         <p class="lastDay">
           较昨日
-          <span class="seriousCount"
-            >{{
+          <span class="seriousCount">{{
               countdata.seriousIncr > 0
                 ? `+${countdata.seriousIncr}`
-                : `${countdata.seriousIncr}`
+                : `${countdata.seriousIncr?countdata.seriousIncr:'-'}`
             }}
           </span>
         </p>
@@ -51,11 +48,10 @@
       <div class="count">
         <p class="lastDay">
           较昨日
-          <span class="confirmedCount"
-            >{{
+          <span class="confirmedCount">{{
               countdata.confirmedIncr > 0
                 ? `+${countdata.confirmedIncr}`
-                : `${countdata.confirmedIncr}`
+                : `${countdata.confirmedIncr?countdata.confirmedIncr:'-'}`
             }}
           </span>
         </p>
@@ -65,11 +61,10 @@
       <div class="count">
         <p class="lastDay">
           较昨日
-          <span class="deadCount"
-            >{{
+          <span class="deadCount">{{
               countdata.deadIncr > 0
                 ? `+${countdata.deadIncr}`
-                : `${countdata.deadIncr}`
+                : `${countdata.deadIncr?countdata.deadIncr:'-'}`
             }}
           </span>
         </p>
@@ -79,11 +74,10 @@
       <div class="count">
         <p class="lastDay">
           较昨日
-          <span class="curedCount"
-            >{{
+          <span class="curedCount">{{
               countdata.curedIncr > 0
                 ? `+${countdata.curedIncr}`
-                : `${countdata.curedIncr}`
+                : `${countdata.curedIncr?countdata.curedIncr:'-'}`
             }}
           </span>
         </p>

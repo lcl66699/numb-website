@@ -12,6 +12,11 @@ import './assets/iconfont.js'
 import '@/assets/css/common.css'
 // 点击之后的爱心
 import './components/clickLove.js'
+//引入echart
+import * as echarts from 'echarts';
+// import 'echarts-liquidfill' //水波图
+Vue.prototype.$echarts = echarts
+
 // 轮播图
 import VueAwesomeSwiper from 'vue-awesome-swiper' //导入两个组件
 import 'swiper/swiper-bundle.min.css' //使用样式
