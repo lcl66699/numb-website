@@ -5,7 +5,7 @@
         <div class="footer-logo foot-flex">
           <h2>lcl个人空间</h2>
           <p>人生唯一确定的就是不确定的人生</p>
-          <button @click="aboutme" class="">About Me</button>
+          <button v-show="$route.name!=='Aboutme'" @click="aboutme" class="">About Me</button>
         </div>
 
         <div class="single-widget1 foot-flex">
@@ -98,6 +98,9 @@ export default {
     };
   },
   components: {},
+  mounted() {
+    // console.log(this.$routse.name);
+  },
   methods: {
     gobeian() {
       window.open("https://beian.miit.gov.cn", "_blank");
@@ -109,7 +112,6 @@ export default {
       window.open("https://blog.numb.run", "_blank");
     },
   },
-  mounted() {},
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div @click="ishanderHeight" class="">
+  <div @click="ishanderHeight" class="chat_box">
     <div class="head_btn">
 
       <el-button plain round type="warning" @click="getSource">随机更换评论</el-button>
@@ -15,20 +15,24 @@
         <el-button type="info " icon="el-icon-info" circle></el-button>
       </el-tooltip>
     </div>
-    <div id="pdfDom" class="music_comment">
-      <div ref="btm_card" class="btm">
-        <div ref="top_card" class="top">
-          <h3 v-html="resObj.content" ref="topcontent" contentEditable='true' class="top_title"></h3>
-          <!-- <textarea v-model="resObj.msg" class="top_title new_input" /> -->
+    <div id="pdfDom">
+      <!-- <div class="empty_box"></div> -->
+      <div class="music_comment">
+        <div ref="btm_card" class="btm">
+          <div ref="top_card" class="top">
+            <h3 v-html="resObj.content" ref="topcontent" contentEditable='true' class="top_title"></h3>
+            <!-- <textarea v-model="resObj.msg" class="top_title new_input" /> -->
 
-          <div class="btm_title">
-            <p class="for_music">来自网易云音乐——</p>
-            <p class="for_music">
-              单曲《<span v-html="resObj.source" ref="btmSource" contentEditable='true'></span>》歌曲评论
-            </p>
+            <div class="btm_title">
+              <p class="for_music">来自网易云音乐——</p>
+              <p class="for_music">
+                单曲《<span v-html="resObj.source" ref="btmSource" contentEditable='true'></span>》歌曲评论
+              </p>
+            </div>
           </div>
         </div>
       </div>
+      <!-- <div class="empty_box"></div> -->
     </div>
 
     <el-dialog title="提示:点击右键可图片另存为哦" :visible.sync="dialogVisible" width="30%">
@@ -44,6 +48,7 @@ export default {
   name: "Home",
   data() {
     return {
+      isDownloadPdf: false,
       musicList: [], //请求到的网易云音乐评论
       resObj: {
         content: `奈何一个人随着年龄的增长，梦想便不复轻盈，
@@ -88,12 +93,16 @@ export default {
       });
     },
     download() {
+      // this.isDownloadPdf = true;
       window.scrollTo(0, 0);
-      this.getPdf("1"); //false为不下载
+      this.getPdf("网易热评").then((res) => {
+        // this.isDownloadPdf = false;
+        console.log("生成成功");
+      });
     },
     async addImg() {
       window.scrollTo(0, 0);
-      let data = await this.getImg("1"); //false为不下载
+      let data = await this.getImg("网易热评"); //false为不下载
       this.baseImg = data;
       // console.log(12312321, data);
       this.dialogVisible = true;
@@ -114,25 +123,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.wrapper {
-  margin: 0 auto;
-  // text-align: center;
-  width: 1280px;
-  .commit-content {
-    margin-top: 22px;
-    font-size: 16px;
-    line-height: 24px;
-    color: #333;
-    text-align: justify;
-  }
-  .commit-song {
-    margin-top: 4px;
-    font-size: 16px;
-    line-height: 24px;
-    color: #333;
-    text-align: justify;
-  }
-}
 .head_btn {
   min-width: 800px;
   height: 60px;
@@ -143,7 +133,6 @@ export default {
 }
 
 .music_comment {
-  background: #ca3e2d;
   background: #af2c31;
   display: flex;
   justify-content: center;
@@ -153,15 +142,15 @@ export default {
   box-sizing: border-box;
   padding: 50px;
   padding-bottom: 300px;
-  padding-bottom: 100px;
+  padding-top: 150px;
   .btm {
     width: 600px;
     min-height: 450px;
     border: 5px solid #fff;
     border-radius: 20px;
     position: relative;
-    // top: 18%;
-    // left: 32%;
+    // top: -20px;
+    left: -10px;
     padding: 70px 60px 60px 60px;
     box-sizing: border-box;
   }
@@ -218,6 +207,22 @@ export default {
     vertical-align: top;
     outline: none;
   }
+}
+.empty_box {
+  height: 246px;
+  width: 100%;
+  background: #af2c31;
+  // visibility: hidden;
+}
+#pdfDom {
+  width: 800px;
+  margin: 0 auto;
+  // height: 1100px;
+  background: #af2c31;
+}
+.chat_box {
+  background: #af2c31;
+  height: 100%;
 }
 </style>
 
